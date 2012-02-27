@@ -1,0 +1,73 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Showing Household</h1>
+                
+                <div class="body">  
+
+                    <p>
+                      <b>Unit:</b>
+                      <%= @household.unit %>
+                    </p>
+                    
+                    <p>
+                      <b>Address:</b>
+                      <%= @household.address %>
+                    </p>
+
+                    <p>
+                      <b>Postal Code:</b>
+                      <%= @household.postalcode %>
+                    </p>
+                    
+                    <p>
+                      <b>Community:</b>
+                      <%= Community.find(@household.community_id).name %>
+                    </p>
+                    
+                    <p>
+                      <b>City:</b>
+                      <%= Location.find(Community.find(@household.community_id).id).get_location_name %>
+                    </p>
+
+                    <h2>Families:</h2>
+                    <table>
+                      <tr width="100%">
+                        <th>Head of Household</th>
+                        <th>Comment</th>
+                        <th width="6%">!</th>
+                        <th>Phone</th>
+                        <th width="6%"></th>
+                        <th width="8%"></th>
+                      </tr>
+                    <%= render @household.families %>
+                    </table>
+
+                    <%= link_to 'Add New Family to Household', new_family_path(:household_id => @household.id) %>
+                    <br />  
+                    
+                    <%= link_to 'Edit', edit_household_path(@household) %> |
+                    <%= link_to 'Back', households_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>  

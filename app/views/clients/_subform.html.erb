@@ -1,0 +1,39 @@
+<%= form_for([@family, @family.clients.build]) do |client_form| %>
+ 
+  <div class="field">
+    <%= client_form.label :gender, "Gender" %><br />
+    <%= select(:client, :gender, Client::GENDERS) %>
+  </div>
+  <div class="field">
+    <%= client_form.label :firstname, "First Name" %><br />
+    <%= client_form.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= client_form.label :middlename, "Middle Name" %><br />
+    <%= client_form.text_field :middlename %>
+  </div>
+  <div class="field">
+    <%= client_form.label :lastname, "Last Name" %><br />
+    <%= client_form.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= client_form.label :birthdate, "Birth Date" %><br />
+    <%= client_form.date_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= client_form.label :emailaddress, "Email Address" %><br />
+    <%= client_form.text_field :emailaddress %>
+  </div>
+  <div class="field">
+    <%= client_form.label :ahcnumber, "Alberta Health Care #" %><br />
+    <%= client_form.text_field :ahcnumber %>
+  </div>
+    <div class="field">
+    <%= client_form.label :healthinfo, "Health Information" %><br />
+    <%= client_form.text_area :healthinfo %>
+  </div>
+  
+  <div class="actions">
+    <%= client_form.submit %>
+  </div>
+<% end %>

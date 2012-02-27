@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comment: MyString
+  redflag: false
+  phone1: MyString
+  phone2: MyString
+  primaryclient: 
+
+two:
+  comment: MyString
+  redflag: false
+  phone1: MyString
+  phone2: MyString
+  primaryclient: 

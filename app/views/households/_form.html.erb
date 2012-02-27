@@ -1,0 +1,50 @@
+<%= form_for(@household) do |household_form| %>
+  <% if @household.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@household.errors.count, "error") %> prohibited this household from being saved:</h2>
+
+      <ul>
+      <% @household.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% @community_readonly = (not params[:community_id].nil?) && (params[:action] == "new") %>
+
+  <div class="field">
+    <% if @community_readonly %>
+        <%= household_form.text_field :community_id, {:readonly => true, :hidden => true, :value => params[:community_id]} %>
+        
+    <% else %>
+        <%= household_form.label :community_id %><br />
+        <%  @communities = Community.find(:all) %>
+        <%= household_form.collection_select(   :community_id, 
+                                                @communities, 
+                                                :id, 
+                                                :name,
+                                            {
+                                                :include_blank => '-Not Assigned-'
+                                            }
+                                        )
+        %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= household_form.label :unit %><br />
+    <%= household_form.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= household_form.label :address %><br />
+    <%= household_form.text_field :address %>
+  </div>
+  <div class="field">
+    <%= household_form.label :postalcode, "Postal Code" %><br />
+    <%= household_form.text_field :postalcode %>
+  </div>
+  <div class="actions">
+    <%= household_form.submit %>
+  </div>
+<% end %>

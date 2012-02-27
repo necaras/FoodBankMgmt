@@ -1,0 +1,72 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Showing Family</h1>
+                
+                <div class="body">  
+
+                    <p>
+                      <b>Primary Client:</b>
+                      <%= @family.get_primaryclient_name %>
+                    </p>
+
+                    <p>
+                      <b>Comment:</b>
+                      <%= @family.comment %>
+                    </p>
+
+                    <p>
+                      <b>Red Flag:</b>
+                      <%= @family.redflag %>
+                    </p>
+
+                    <p>
+                      <b>Primary Phone:</b>
+                      <%= @family.phone1 %>
+                    </p>
+
+                    <p>
+                      <b>Alternate Phone:</b>
+                      <%= @family.phone2 %>
+                    </p>
+
+                    <h2>Family Members</h2>
+                    <table>
+                      <tr>
+                        <th width="64%" style="text-align: left;">Name</th>
+                        <th width="26%">Birth Date</th>
+                        <th width="8%"></th>
+                        <th width="6%"></th>
+                      </tr>
+                    <%= render @family.clients %>
+                    </table>
+
+                    <%= link_to 'Add New Client to Family', new_client_path(:family_id => @family.id) %>
+                    <br />
+
+                    <%= link_to 'Edit', edit_family_path(@family) %> |
+                    <%= link_to 'Back', families_path %>
+
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>  

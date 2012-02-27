@@ -1,0 +1,63 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Showing Community</h1>
+                
+                <div class="body">  
+
+                    <p>
+                      <b>Name:</b>
+                      <%= @community.name %>
+                    </p>
+
+                    <p>
+                      <b>Jurisdiction description:</b>
+                      <%= @community.jurisdiction_description %>
+                    </p>
+
+                    <p>
+                      <b>Location:</b>
+                      <%= Location.find(@community.location_id).get_location_name %>
+                    </p>
+                    
+                    <h2>Households:</h2>
+                    <table>
+                      <tr width="100%">
+                        <th>Unit</th>
+                        <th>Address</th>
+                        <th>Community</th>
+                        <th width="8%"></th>
+                        <th width="6%"></th>
+                      </tr>
+                    <%= render @community.households %>
+                    </table>
+
+                    <%= link_to 'Add New Household to Community', new_household_path(:community_id => @community.id) %>
+                    <br />     
+
+
+                    <%= link_to 'Edit', edit_community_path(@community) %> |
+                    <%= link_to 'Back', communities_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>  

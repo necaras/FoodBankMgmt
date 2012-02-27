@@ -1,0 +1,89 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Showing Client</h1>
+                
+                <div class="body">
+
+                    <p>
+                      <b>Family ID:</b>
+                      <%= @client.family_id %>
+                    </p>
+
+                    <p>
+                      <b>Gender:</b>
+                      <%= @client.gender %>
+                    </p>
+
+                    <p>
+                      <b>First Name:</b>
+                      <%= @client.firstname %>
+                    </p>
+
+                    <p>
+                      <b>Middle Name:</b>
+                      <%= @client.middlename %>
+                    </p>
+
+                    <p>
+                      <b>Last Name:</b>
+                      <%= @client.lastname %>
+                    </p>
+
+                    <p>
+                      <b>Birth Date:</b>
+                      <%= @client.birthdate %>
+                    </p>
+
+                    <p>
+                      <b>Email Address:</b>
+                      <%= @client.emailaddress %>
+                    </p>
+
+                    <p>
+                      <b>AHC Number:</b>
+                      <%= @client.ahcnumber %>
+                    </p>
+
+                    <p>
+                      <b>Health Information:</b>
+                      <%= @client.healthinfo %>
+                    </p>
+
+                    <p>
+                        <b>Client Types:</b>
+                        <%= @client.ctypes.find(@client.ctype_ids).map { |t| t.description }.join(", ") %>
+                    </p>
+
+                    <h2>Notes</h2>
+                        <%= render @client.cnotes %>
+
+                    <h2>Add a note:</h2>
+                    <%= render "cnotes/form" %>
+
+                    <%= link_to 'Edit Client', edit_client_path(@client) %> |
+                    <%= link_to 'Back to Clients', clients_path %>
+                
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>                

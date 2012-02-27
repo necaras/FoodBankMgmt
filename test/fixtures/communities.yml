@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  jurisdiction_description: MyString
+  location: 
+
+two:
+  name: MyString
+  jurisdiction_description: MyString
+  location: 

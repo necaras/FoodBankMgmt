@@ -1,0 +1,15 @@
+    <p>
+        <b>Date:</b>
+        <%= cnote.notedate %>
+    </p>
+    
+    <p>
+        <b>Note:</b>
+        <%= cnote.note %>
+    </p>
+    
+    <p>
+        <%= link_to 'Delete Note', [cnote.client, cnote],
+            :confirm => 'Are you sure?',
+            :method => :delete %>
+    </p>

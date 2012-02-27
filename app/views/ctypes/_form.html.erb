@@ -1,0 +1,22 @@
+<%= form_for(@ctype) do |ctype_form| %>
+  <% if @ctype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ctype.errors.count, "error") %> prohibited this ctype from being saved:</h2>
+
+      <ul>
+      <% @ctype.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+        <%= ctype_form.label :description %><br />
+        <%= ctype_form.text_field :description %>
+    </div>
+    
+  <div class="actions">
+    <%= ctype_form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,4 @@
+    <% for ctype in Ctype.find(:all) %>
+        <%= check_box_tag 'client[ctype_ids][]', ctype.id, @client.ctypes.include?(ctype) %>
+        <%= h ctype.description %> <br />
+    <% end %>

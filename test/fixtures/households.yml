@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  postalcode: MyString
+  address: MyString
+  unit: MyString
+  community: 
+
+two:
+  postalcode: MyString
+  address: MyString
+  unit: MyString
+  community: 

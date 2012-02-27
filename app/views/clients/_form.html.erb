@@ -1,0 +1,77 @@
+
+
+<%= form_for(@client) do |client_form| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <% @family_readonly = (not params[:family_id].nil?) && (params[:action] == "new") %>
+
+  <div class="field">
+    <% if @family_readonly %>
+        <%= client_form.text_field :family_id, {:readonly => true, :hidden => true, :value => params[:family_id]} %>
+        
+    <% else %>
+        <%= client_form.label :family_id, "Family" %><br />
+        <%  @families = Family.find(:all) %>
+        <%= client_form.collection_select(  :family_id, 
+                                            @families, 
+                                            :id, 
+                                            :id, 
+                                            {
+                                                :include_blank => '-Not Assigned-'
+                                            }
+                                        )
+        %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= client_form.label :gender, "Gender" %><br />
+    <%= client_form.select(:gender, Client::GENDERS) %>
+  </div>
+  <div class="field">
+    <%= client_form.label :firstname, "First Name" %><br />
+    <%= client_form.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= client_form.label :middlename, "Middle Name" %><br />
+    <%= client_form.text_field :middlename %>
+  </div>
+  <div class="field">
+    <%= client_form.label :lastname, "Last Name" %><br />
+    <%= client_form.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= client_form.label :birthdate, "Birth Date" %><br />
+    <%= client_form.date_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= client_form.label :emailaddress, "Email Address" %><br />
+    <%= client_form.text_field :emailaddress %>
+  </div>
+  <div class="field">
+    <%= client_form.label :ahcnumber, "Alberta Health Care #" %><br />
+    <%= client_form.text_field :ahcnumber %>
+  </div>
+    <div class="field">
+    <%= client_form.label :healthinfo, "Health Information" %><br />
+    <%= client_form.text_area :healthinfo %>
+  </div>
+
+  <%= render    :partial => 'client2ctypes/form',
+                :locals => {:form => client_form} %>
+  
+  <div class="actions">
+    <%= client_form.submit %>
+  </div>
+<% end %>
+  

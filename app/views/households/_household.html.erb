@@ -1,0 +1,7 @@
+<tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+    <td><%= household.unit %></td>                      
+    <td><%= household.address %></td>
+    <td><%= Community.find(household.community_id).name %></td>
+    <td><%= link_to 'Show', household %></td>
+    <td><%= link_to 'Edit', edit_household_path(household) %></td>
+</tr>

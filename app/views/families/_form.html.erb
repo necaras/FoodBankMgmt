@@ -1,0 +1,71 @@
+<%= form_for(@family) do |family_form| %>
+  <% if @family.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@family.errors.count, "error") %> prohibited this family from being saved:</h2>
+
+      <ul>
+      <% @family.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% @household_readonly = (not params[:household_id].nil?) && (params[:action] == "new") %>
+
+  <div class="field">
+    <% if @household_readonly %>
+        <%= family_form.text_field :household_id, {:readonly => true, :hidden => true, :value => params[:household_id]} %>
+        
+    <% else %>
+        <%= family_form.label :household_id, "Household" %><br />
+        <%  @households = Household.find(:all)
+            @households_addresses = @households.collect{|h| [h.get_household_address, h.id]}%>
+        <%= family_form.select( :household_id, 
+                                @households_addresses, 
+                                {
+                                    :include_blank => '-Not Assigned-'
+                                }
+                               )
+        %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= family_form.label :primaryclient_id, "Primary Client" %><br />
+    <%= 
+        @clients = Client.find_all_by_family_id(@family.id)
+        @clients_fullnames = @clients.collect{|c| [c.get_client_name, c.id]}
+        family_form.select(:primaryclient_id, @clients_fullnames, {:include_blank => '-None-'}) 
+    %>
+  </div>
+  
+  <div class="field">
+    <%= family_form.label :comment %><br />
+    <%= family_form.text_field :comment %>
+  </div>
+  <div class="field">
+    <%= family_form.check_box :redflag %>
+    <%= family_form.label :redflag, "Red Flag" %>
+  </div>
+  <div class="field">
+    <%= family_form.label :phone1 %><br />
+    <%= family_form.text_field :phone1 %>
+  </div>
+  <div class="field">
+    <%= family_form.label :phone2 %><br />
+    <%= family_form.text_field :phone2 %>
+  </div>
+  
+  <div class="field">
+  <%= family_form.label :fstate_id, "Family State" %><br />
+    <%= 
+        fstates_descriptions = Fstate.all.collect{|fs| [fs.description, fs.id]}
+        family_form.select(:fstate_id, fstates_descriptions, {:include_blank => '-None-'}) 
+    %>
+  </div>
+  
+  <div class="actions">
+    <%= family_form.submit %>
+  </div>
+<% end %>

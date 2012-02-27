@@ -1,0 +1,47 @@
+<%= form_for(@community) do |community_form| %>
+  <% if @community.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@community.errors.count, "error") %> prohibited this community from being saved:</h2>
+
+      <ul>
+      <% @community.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% @location_readonly = (not params[:location_id].nil?) && (params[:action] == "new") %>
+
+  <div class="field">
+    <% if @location_readonly %>
+        <%= community_form.text_field :location_id, {:readonly => true, :hidden => true, :value => params[:location_id]} %>
+        
+    <% else %>
+        <%= community_form.label :location_id, "Location" %><br />
+        <%  @locations = Location.find(:all) %>
+        <%= community_form.collection_select(   :location_id, 
+                                                @locations, 
+                                                :id, 
+                                                :city,
+                                                {
+                                                :include_blank => '-Not Assigned-'
+                                                }
+                                            )
+        %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= community_form.label :name %><br />
+    <%= community_form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= community_form.label :jurisdiction_description, "Description" %><br />
+    <%= community_form.text_field :jurisdiction_description %>
+  </div>
+
+  <div class="actions">
+    <%= community_form.submit %>
+  </div>
+<% end %>
