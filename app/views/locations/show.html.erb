@@ -35,19 +35,27 @@
                       <%= @location.jurisdiction_description %>
                     </p>
                     
-                    <h2>Communities:</h2>
-                    <table>
-                      <tr width="100%">
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th width="8%"></th>
-                        <th width="6%"></th>
-                      </tr>
-                    <%= render @location.communities %>
-                    </table>
+                    <% if @location.communities.nil? || @location.communities.empty? %>
+                    
+                        <p>There are no communities in this location.</p>
+                    
+                    <% else %>
+                    
+                        <h2>Communities:</h2>
+                        <table>
+                          <tr width="100%">
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+                        <%= render @location.communities %>
+                        </table>
+                        
+                    <% end %>
 
                     <%= link_to 'Add New Community to Location', new_community_path(:location_id => @location.id) %>
-                    <br />                    
+                    <br /><br />                
 
                     <%= link_to 'Edit', edit_location_path(@location) %> |
                     <%= link_to 'Back', locations_path %>
