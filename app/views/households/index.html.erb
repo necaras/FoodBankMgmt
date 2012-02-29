@@ -15,26 +15,34 @@
                 <h1>Listing Households</h1>
                 
                 <div class="body">  
+                
+                    <% if @households.nil? || @households.empty? %>
+                        
+                        <p>There are no households.</p>
+                    
+                    <% else %>
+                
+                        <table>
+                          <tr width="100%">
+                            <th>Unit</th>
+                            <th>Address</th>
+                            <th>Community</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
 
-                    <table>
-                      <tr width="100%">
-                        <th>Unit</th>
-                        <th>Address</th>
-                        <th>Community</th>
-                        <th width="8%"></th>
-                        <th width="6%"></th>
-                      </tr>
-
-                    <% @households.each do |household| %>
-                      <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
-                        <td><%= household.unit %></td>                      
-                        <td><%= household.address %></td>
-                        <td><%= Community.find(household.community_id).name %></td>
-                        <td><%= link_to 'Show', household %></td>
-                        <td><%= link_to 'Edit', edit_household_path(household) %></td>
-                      </tr>
+                        <% @households.each do |household| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= household.unit %></td>                      
+                            <td><%= household.address %></td>
+                            <td><%= Community.find(household.community_id).name %></td>
+                            <td><%= link_to 'Show', household %></td>
+                            <td><%= link_to 'Edit', edit_household_path(household) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                        
                     <% end %>
-                    </table>
 
                     <br />
 
