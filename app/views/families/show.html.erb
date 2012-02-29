@@ -40,20 +40,27 @@
                       <b>Alternate Phone:</b>
                       <%= @family.phone2 %>
                     </p>
-
-                    <h2>Family Members</h2>
-                    <table>
-                      <tr>
-                        <th width="64%" style="text-align: left;">Name</th>
-                        <th width="26%">Birth Date</th>
-                        <th width="8%"></th>
-                        <th width="6%"></th>
-                      </tr>
-                    <%= render @family.clients %>
-                    </table>
+                    
+                    <% if @family.clients.nil? || @family.clients.empty? %>
+                    
+                        <p>There are no members in this family.</p>
+                    
+                    <% else %>                    
+                        <h2>Family Members</h2>
+                        <table>
+                          <tr>
+                            <th width="64%" style="text-align: left;">Name</th>
+                            <th width="26%">Birth Date</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+                        <%= render @family.clients %>
+                        </table>
+                    
+                    <% end %>
 
                     <%= link_to 'Add New Client to Family', new_client_path(:family_id => @family.id) %>
-                    <br />
+                    <br /><br />
 
                     <%= link_to 'Edit', edit_family_path(@family) %> |
                     <%= link_to 'Back', families_path %>
