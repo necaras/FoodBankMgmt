@@ -16,23 +16,31 @@
                 
                 <div class="body">  
 
-                    <table>
-                      <tr>
-                        <th>City</th>
-                        <th>Prov.</th>
-                        <th width="6%"></th>
-                        <th width="8%"></th>
-                      </tr>
+                    <% if @locations.nil? || @locations.empty? %>
+                        
+                        <p>There are no locations.</p>
+                    
+                    <% else %>
+                    
+                        <table>
+                          <tr>
+                            <th>City</th>
+                            <th>Prov.</th>
+                            <th width="6%"></th>
+                            <th width="8%"></th>
+                          </tr>
 
-                    <% @locations.each do |location| %>
-                      <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
-                        <td><%= location.city %></td>
-                        <td><%= location.province %></td>
-                        <td><%= link_to 'Show', location %></td>
-                        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-                      </tr>
+                        <% @locations.each do |location| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= location.city %></td>
+                            <td><%= location.province %></td>
+                            <td><%= link_to 'Show', location %></td>
+                            <td><%= link_to 'Edit', edit_location_path(location) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+
                     <% end %>
-                    </table>
 
                     <br />
 
