@@ -1,4 +1,10 @@
 Foodbank::Application.routes.draw do
+  resources :donees
+
+  resources :donors
+
+  resources :dtypes
+
   resources :households
 
   resources :communities
