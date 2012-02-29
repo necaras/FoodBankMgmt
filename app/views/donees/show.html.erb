@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @donee.name %>
+</p>
+
+<p>
+  <b>Phone1:</b>
+  <%= @donee.phone1 %>
+</p>
+
+<p>
+  <b>Phone2:</b>
+  <%= @donee.phone2 %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%= @donee.unit %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @donee.address %>
+</p>
+
+<p>
+  <b>Emailaddress:</b>
+  <%= @donee.emailaddress %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @donee.contact %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @donee.location %>
+</p>
+
+<p>
+  <b>Dtype:</b>
+  <%= @donee.dtype %>
+</p>
+
+
+<%= link_to 'Edit', edit_donee_path(@donee) %> |
+<%= link_to 'Back', donees_path %>

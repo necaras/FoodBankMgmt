@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218232405) do
+ActiveRecord::Schema.define(:version => 20120229224020) do
 
   create_table "client2ctypes", :force => true do |t|
     t.integer  "client_id"
@@ -58,6 +58,46 @@ ActiveRecord::Schema.define(:version => 20120218232405) do
   add_index "communities", ["location_id"], :name => "index_communities_on_location_id"
 
   create_table "ctypes", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "donees", :force => true do |t|
+    t.string   "name"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "unit"
+    t.string   "address"
+    t.string   "emailaddress"
+    t.string   "contact"
+    t.integer  "location_id"
+    t.integer  "dtype_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "donees", ["dtype_id"], :name => "index_donees_on_dtype_id"
+  add_index "donees", ["location_id"], :name => "index_donees_on_location_id"
+
+  create_table "donors", :force => true do |t|
+    t.string   "name"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "unit"
+    t.string   "address"
+    t.string   "emailaddress"
+    t.string   "contact"
+    t.integer  "location_id"
+    t.integer  "dtype_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "donors", ["dtype_id"], :name => "index_donors_on_dtype_id"
+  add_index "donors", ["location_id"], :name => "index_donors_on_location_id"
+
+  create_table "dtypes", :force => true do |t|
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

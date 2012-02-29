@@ -1,0 +1,53 @@
+<%= form_for(@donee) do |f| %>
+  <% if @donee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@donee.errors.count, "error") %> prohibited this donee from being saved:</h2>
+
+      <ul>
+      <% @donee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone1 %><br />
+    <%= f.text_field :phone1 %>
+  </div>
+  <div class="field">
+    <%= f.label :phone2 %><br />
+    <%= f.text_field :phone2 %>
+  </div>
+  <div class="field">
+    <%= f.label :unit %><br />
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :emailaddress %><br />
+    <%= f.text_field :emailaddress %>
+  </div>
+  <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :dtype %><br />
+    <%= f.text_field :dtype %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

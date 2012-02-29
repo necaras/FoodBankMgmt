@@ -1,0 +1,23 @@
+<h1>Listing dtypes</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dtypes.each do |dtype| %>
+  <tr>
+    <td><%= dtype.description %></td>
+    <td><%= link_to 'Show', dtype %></td>
+    <td><%= link_to 'Edit', edit_dtype_path(dtype) %></td>
+    <td><%= link_to 'Destroy', dtype, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dtype', new_dtype_path %>

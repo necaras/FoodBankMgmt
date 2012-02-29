@@ -1,0 +1,21 @@
+<%= form_for(@dtype) do |f| %>
+  <% if @dtype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dtype.errors.count, "error") %> prohibited this dtype from being saved:</h2>
+
+      <ul>
+      <% @dtype.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

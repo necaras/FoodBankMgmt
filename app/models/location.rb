@@ -10,6 +10,8 @@ class Location < ActiveRecord::Base
                 :country,       :presence   => true
     
     has_many    :communities,   :dependent  => :destroy
+    has_many    :donors,        :dependent  => :destroy
+    has_many    :donees,        :dependent  => :destroy
 
     #method get_location_name
     #returns a string containing location's city and province formatted 'City, Prov'

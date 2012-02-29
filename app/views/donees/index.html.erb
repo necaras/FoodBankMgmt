@@ -1,0 +1,39 @@
+<h1>Listing donees</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone1</th>
+    <th>Phone2</th>
+    <th>Unit</th>
+    <th>Address</th>
+    <th>Emailaddress</th>
+    <th>Contact</th>
+    <th>Location</th>
+    <th>Dtype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @donees.each do |donee| %>
+  <tr>
+    <td><%= donee.name %></td>
+    <td><%= donee.phone1 %></td>
+    <td><%= donee.phone2 %></td>
+    <td><%= donee.unit %></td>
+    <td><%= donee.address %></td>
+    <td><%= donee.emailaddress %></td>
+    <td><%= donee.contact %></td>
+    <td><%= donee.location %></td>
+    <td><%= donee.dtype %></td>
+    <td><%= link_to 'Show', donee %></td>
+    <td><%= link_to 'Edit', edit_donee_path(donee) %></td>
+    <td><%= link_to 'Destroy', donee, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Donee', new_donee_path %>
