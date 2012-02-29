@@ -14,23 +14,31 @@
             <div class="content">
                 <h1>Listing Client Type</h1>
                 
-                <div class="body">                    
+                <div class="body">
 
-                    <table>
-                      <tr>
-                        <th width="86%" style="text-align:left;">Description</th>
-                        <th width="8%"></th>
-                        <th width="6%"></th>
-                      </tr>
+                    <% if @ctypes.nil? || @ctypes.empty? %>
+                        
+                        <p>There are no client types.</p>
+                    
+                    <% else %>                
 
-                    <% @ctypes.each do |ctype| %>
-                      <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
-                        <td><%= ctype.description %>
-                        <td><%= link_to 'Show', ctype %></td>
-                        <td><%= link_to 'Edit', edit_ctype_path(ctype) %></td>
-                      </tr>
+                        <table>
+                          <tr>
+                            <th width="86%" style="text-align:left;">Description</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+
+                        <% @ctypes.each do |ctype| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= ctype.description %>
+                            <td><%= link_to 'Show', ctype %></td>
+                            <td><%= link_to 'Edit', edit_ctype_path(ctype) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                        
                     <% end %>
-                    </table>
 
                     <br />
 
