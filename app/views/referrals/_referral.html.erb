@@ -1,0 +1,7 @@
+<tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+    <td><%= referral.refagency.try(:name) %></td>
+    <td><%= referral.referraldate %></td>
+    <td><%= referral.clientname %></td>
+    <td><%= link_to 'Show', referral %></td>
+    <td><%= link_to 'Edit', edit_referral_path(referral) %></td>
+</tr>

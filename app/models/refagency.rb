@@ -12,6 +12,7 @@ class Refagency < ActiveRecord::Base
 
   belongs_to :location              #FK - location_id
   belongs_to :refagencycategory     #FK - refagencycategory_id
+  has_many   :referrals, :dependent => :destroy
 
   validates     :location_id,
                 :name,

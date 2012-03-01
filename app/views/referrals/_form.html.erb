@@ -1,4 +1,4 @@
-<%= form_for(@referral) do |f| %>
+<%= form_for(@referral) do |refagency_form| %>
   <% if @referral.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@referral.errors.count, "error") %> prohibited this referral from being saved:</h2>
@@ -10,33 +10,40 @@
       </ul>
     </div>
   <% end %>
+  
+  <% @refagency_readonly = (not params[:refagency_id].nil?) && (params[:action] == "new") %>
 
   <div class="field">
-    <%= f.label :refagency, "Referral Agency" %><br />
-    <% @refagencies = Refagency.all.map{|ra| [ra.name, ra.id]} %>
-    <%= f.select(:refagency_id, @refagencies, {:include_blank => "--Select an Agency--"}) %>
+    <% if @refagency_readonly %>
+        <%= refagency_form.text_field :refagency_id, {:readonly => true, :hidden => true, :value => params[:refagency_id]} %>
+        
+    <% else %>
+        <%= refagency_form.label :refagency_id, "Referral Agency" %><br />
+        <%  @refagencies = Refagency.all.map{|ra| [ra.name, ra.id]} %>
+        <%= refagency_form.select(:refagency_id, @refagencies, {:include_blank => "--Select an Agency--"}) %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :details %><br />
-    <%= f.text_area :details %>
+    <%= refagency_form.label :details %><br />
+    <%= refagency_form.text_area :details %>
   </div>
   <div class="field">
-    <%= f.label :numberofadults, "Number of Adults" %><br />
-    <%= f.number_field :numberofadults %>
+    <%= refagency_form.label :numberofadults, "Number of Adults" %><br />
+    <%= refagency_form.number_field :numberofadults %>
   </div>
   <div class="field">
-    <%= f.label :numberofchildren, "Number of Children" %><br />
-    <%= f.number_field :numberofchildren %>
+    <%= refagency_form.label :numberofchildren, "Number of Children" %><br />
+    <%= refagency_form.number_field :numberofchildren %>
   </div>
   <div class="field">
-    <%= f.label :referraldate, "Referral Date" %><br />
-    <%= f.date_select :referraldate %>
+    <%= refagency_form.label :referraldate, "Referral Date" %><br />
+    <%= refagency_form.date_select :referraldate %>
   </div>
   <div class="field">
-    <%= f.label :clientname, "Client Name" %><br />
-    <%= f.text_field :clientname %>
+    <%= refagency_form.label :clientname, "Client Name" %><br />
+    <%= refagency_form.text_field :clientname %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= refagency_form.submit %>
   </div>
 <% end %>
