@@ -1,3 +1,12 @@
 class Referral < ActiveRecord::Base
-  belongs_to :refagency
+#   id                  int(11) PK
+#   refagency_id        int(11) FK
+#   details             text
+#   numberofadults      int(11)
+#   numberofchildren    int(11)
+#   referraldate        date
+#   clientname          string
+
+  belongs_to :refagency, :dependent => :destroy
+  
 end
