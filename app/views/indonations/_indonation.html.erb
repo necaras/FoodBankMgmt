@@ -1,0 +1,8 @@
+<tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+    <td><%= Donor.find(indonation.donor).name %></td>
+    <td><%= indonation.donationdate %></td>
+    <td><%= indonation.weightdonated %></td>
+    <td><%= indonation.moneydonated %></td>
+    <td><%= link_to 'Show', indonation %></td>
+    <td><%= link_to 'Edit', edit_indonation_path(indonation) %></td>
+</tr>

@@ -1,4 +1,4 @@
-<%= form_for(@indonation) do |f| %>
+<%= form_for(@indonation) do |donor_form| %>
   <% if @indonation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@indonation.errors.count, "error") %> prohibited this indonation from being saved:</h2>
@@ -11,26 +11,33 @@
     </div>
   <% end %>
 
+  <% @donor_readonly = (not params[:donor_id].nil?) && (params[:action] == "new") %>
+
   <div class="field">
-    <%= f.label :donor %><br />
-    <% @donors = Donor.all.map{|d| [d.name, d.id]} %>
-    <%= f.select(:donor_id, @donors, {:include_blank => "--Select a Donor--"}) %>
+    <% if @donor_readonly %>
+        <%= donor_form.text_field :donor_id, {:readonly => true, :hidden => true, :value => params[:donor_id]} %>
+        
+    <% else %>
+        <%= donor_form.label :donor_id, "Donor" %><br />
+        <%  @donors = Donor.all.map{|d| [d.name, d.id]} %>
+        <%= donor_form.select(:donor_id, @donors, {:include_blank => "--Select a Donor--"}) %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :donationdate, "Date of Donation" %><br />
-    <%= f.date_select :donationdate %>
+    <%= donor_form.label :donationdate, "Date of Donation" %><br />
+    <%= donor_form.date_select :donationdate %>
   </div>
   <div class="field">
-    <%= f.label :weightdonated, "Weight of Items Donated" %><br />
-    <%= f.text_field :weightdonated %>
+    <%= donor_form.label :weightdonated, "Weight of Items Donated" %><br />
+    <%= donor_form.text_field :weightdonated %>
   </div>
   <div class="field">
-    <%= f.label :moneydonated, "Amount of Money Donated" %><br />
-    <%= f.text_field :moneydonated %>
+    <%= donor_form.label :moneydonated, "Amount of Money Donated" %><br />
+    <%= donor_form.text_field :moneydonated %>
   </div>
   <div class="field">
-    <%= f.label :details %><br />
-    <%= f.text_area :details %>
+    <%= donor_form.label :details %><br />
+    <%= donor_form.text_area :details %>
   </div>
   <div class="actions">
     <% if params[:action] == "new"
@@ -38,6 +45,6 @@
        else
             @submit_label = "Update Donation"
        end %>
-    <%= f.submit @submit_label%>
+    <%= donor_form.submit @submit_label%>
   </div>
 <% end %>
