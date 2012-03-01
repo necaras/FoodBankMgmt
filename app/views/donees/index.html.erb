@@ -35,7 +35,7 @@
                           <tr>
                             <td><%= donee.name %></td>
                             <td><%= donee.location.get_location_name %></td>
-                            <td><%= donee.dtype.description unless (donee.dtype.nil? || donee.dtype.empty?) %></td>
+                            <td><%= donee.dtype.description unless (donee.dtype.nil?) %></td>
                             <td><%= link_to 'Show', donee %></td>
                             <td><%= link_to 'Edit', edit_donee_path(donee) %></td>
                           </tr>

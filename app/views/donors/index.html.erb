@@ -35,7 +35,7 @@
                           <tr>
                             <td><%= donor.name %></td>
                             <td><%= donor.location.get_location_name %></td>
-                            <td><%= donor.dtype.description unless (donor.dtype.nil? || donor.dtype.empty?) %></td>
+                            <td><%= donor.dtype.description unless (donor.dtype.nil?) %></td>
                             <td><%= link_to 'Show', donor %></td>
                             <td><%= link_to 'Edit', edit_donor_path(donor) %></td>
                           </tr>
@@ -46,7 +46,7 @@
 
                     <br />
 
-                    <%= link_to 'New donor', new_donor_path %>
+                    <%= link_to 'New Donor', new_donor_path %>
 
                 </div>
             </div>
