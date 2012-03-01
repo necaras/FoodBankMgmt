@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301212242) do
+ActiveRecord::Schema.define(:version => 20120301232358) do
 
   create_table "client2ctypes", :force => true do |t|
     t.integer  "client_id"
@@ -203,5 +203,47 @@ ActiveRecord::Schema.define(:version => 20120301212242) do
   end
 
   add_index "referrals", ["refagency_id"], :name => "index_referrals_on_refagency_id"
+
+  create_table "vhours", :force => true do |t|
+    t.integer  "volunteer_id"
+    t.date     "date"
+    t.float    "hoursworked"
+    t.text     "details"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "vhours", ["volunteer_id"], :name => "index_vhours_on_volunteer_id"
+
+  create_table "volunteers", :force => true do |t|
+    t.integer  "location_id"
+    t.integer  "vtype_id"
+    t.string   "gender"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "middlename"
+    t.string   "unit"
+    t.string   "address"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.date     "birthdate"
+    t.date     "startdate"
+    t.string   "emailaddress"
+    t.string   "postalcode"
+    t.string   "emergcontactname"
+    t.string   "emergcontactphone"
+    t.text     "notes"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "volunteers", ["location_id"], :name => "index_volunteers_on_location_id"
+  add_index "volunteers", ["vtype_id"], :name => "index_volunteers_on_vtype_id"
+
+  create_table "vtypes", :force => true do |t|
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

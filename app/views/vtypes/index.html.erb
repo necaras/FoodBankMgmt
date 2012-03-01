@@ -1,0 +1,23 @@
+<h1>Listing vtypes</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vtypes.each do |vtype| %>
+  <tr>
+    <td><%= vtype.description %></td>
+    <td><%= link_to 'Show', vtype %></td>
+    <td><%= link_to 'Edit', edit_vtype_path(vtype) %></td>
+    <td><%= link_to 'Destroy', vtype, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vtype', new_vtype_path %>

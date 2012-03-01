@@ -1,4 +1,10 @@
 Foodbank::Application.routes.draw do
+  resources :vhours
+
+  resources :volunteers
+
+  resources :vtypes
+
   resources :referrals
 
   resources :refagencies

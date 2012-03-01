@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Volunteer:</b>
+  <%= @vhour.volunteer %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @vhour.date %>
+</p>
+
+<p>
+  <b>Hoursworked:</b>
+  <%= @vhour.hoursworked %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @vhour.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_vhour_path(@vhour) %> |
+<%= link_to 'Back', vhours_path %>

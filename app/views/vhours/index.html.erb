@@ -1,0 +1,29 @@
+<h1>Listing vhours</h1>
+
+<table>
+  <tr>
+    <th>Volunteer</th>
+    <th>Date</th>
+    <th>Hoursworked</th>
+    <th>Details</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vhours.each do |vhour| %>
+  <tr>
+    <td><%= vhour.volunteer %></td>
+    <td><%= vhour.date %></td>
+    <td><%= vhour.hoursworked %></td>
+    <td><%= vhour.details %></td>
+    <td><%= link_to 'Show', vhour %></td>
+    <td><%= link_to 'Edit', edit_vhour_path(vhour) %></td>
+    <td><%= link_to 'Destroy', vhour, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vhour', new_vhour_path %>
