@@ -1,0 +1,2 @@
+module OutdonationsHelper
+end

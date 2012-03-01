@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Donee:</b>
+  <%= @outdonation.donee %>
+</p>
+
+<p>
+  <b>Donationdate:</b>
+  <%= @outdonation.donationdate %>
+</p>
+
+<p>
+  <b>Weightdonated:</b>
+  <%= @outdonation.weightdonated %>
+</p>
+
+<p>
+  <b>Moneydonated:</b>
+  <%= @outdonation.moneydonated %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @outdonation.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_outdonation_path(@outdonation) %> |
+<%= link_to 'Back', outdonations_path %>

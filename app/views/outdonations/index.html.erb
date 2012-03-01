@@ -1,0 +1,31 @@
+<h1>Listing outdonations</h1>
+
+<table>
+  <tr>
+    <th>Donee</th>
+    <th>Donationdate</th>
+    <th>Weightdonated</th>
+    <th>Moneydonated</th>
+    <th>Details</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @outdonations.each do |outdonation| %>
+  <tr>
+    <td><%= outdonation.donee %></td>
+    <td><%= outdonation.donationdate %></td>
+    <td><%= outdonation.weightdonated %></td>
+    <td><%= outdonation.moneydonated %></td>
+    <td><%= outdonation.details %></td>
+    <td><%= link_to 'Show', outdonation %></td>
+    <td><%= link_to 'Edit', edit_outdonation_path(outdonation) %></td>
+    <td><%= link_to 'Destroy', outdonation, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Outdonation', new_outdonation_path %>

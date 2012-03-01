@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229224020) do
+ActiveRecord::Schema.define(:version => 20120301010407) do
 
   create_table "client2ctypes", :force => true do |t|
     t.integer  "client_id"
@@ -135,6 +135,18 @@ ActiveRecord::Schema.define(:version => 20120229224020) do
 
   add_index "households", ["community_id"], :name => "index_households_on_community_id"
 
+  create_table "indonations", :force => true do |t|
+    t.integer  "donor_id"
+    t.date     "donationdate"
+    t.float    "weightdonated"
+    t.float    "moneydonated"
+    t.text     "details"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "indonations", ["donor_id"], :name => "index_indonations_on_donor_id"
+
   create_table "locations", :force => true do |t|
     t.string   "city"
     t.string   "province"
@@ -143,5 +155,17 @@ ActiveRecord::Schema.define(:version => 20120229224020) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  create_table "outdonations", :force => true do |t|
+    t.integer  "donee_id"
+    t.date     "donationdate"
+    t.float    "weightdonated"
+    t.float    "moneydonated"
+    t.text     "details"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "outdonations", ["donee_id"], :name => "index_outdonations_on_donee_id"
 
 end

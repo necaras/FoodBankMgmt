@@ -1,0 +1,31 @@
+<h1>Listing indonations</h1>
+
+<table>
+  <tr>
+    <th>Donor</th>
+    <th>Donationdate</th>
+    <th>Weightdonated</th>
+    <th>Moneydonated</th>
+    <th>Details</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @indonations.each do |indonation| %>
+  <tr>
+    <td><%= indonation.donor %></td>
+    <td><%= indonation.donationdate %></td>
+    <td><%= indonation.weightdonated %></td>
+    <td><%= indonation.moneydonated %></td>
+    <td><%= indonation.details %></td>
+    <td><%= link_to 'Show', indonation %></td>
+    <td><%= link_to 'Edit', edit_indonation_path(indonation) %></td>
+    <td><%= link_to 'Destroy', indonation, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Indonation', new_indonation_path %>

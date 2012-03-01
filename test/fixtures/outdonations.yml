@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  donee: 
+  donationdate: 2012-02-29
+  weightdonated: 1.5
+  moneydonated: 1.5
+  details: MyText
+
+two:
+  donee: 
+  donationdate: 2012-02-29
+  weightdonated: 1.5
+  moneydonated: 1.5
+  details: MyText

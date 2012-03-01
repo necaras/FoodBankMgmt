@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Donor:</b>
+  <%= @indonation.donor %>
+</p>
+
+<p>
+  <b>Donationdate:</b>
+  <%= @indonation.donationdate %>
+</p>
+
+<p>
+  <b>Weightdonated:</b>
+  <%= @indonation.weightdonated %>
+</p>
+
+<p>
+  <b>Moneydonated:</b>
+  <%= @indonation.moneydonated %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @indonation.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_indonation_path(@indonation) %> |
+<%= link_to 'Back', indonations_path %>

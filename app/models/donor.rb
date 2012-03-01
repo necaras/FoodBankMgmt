@@ -10,8 +10,9 @@ class Donor < ActiveRecord::Base
 #   location_id     int(11)
 #   dtype_id        int(11)
 
-  belongs_to :location  #FK - location_id
-  belongs_to :dtype     #FK - dtype_id
+  belongs_to :location      #FK - location_id
+  belongs_to :dtype         #FK - dtype_id
+  has_many   :indonations, :dependent => :destroy
   
   validates     :name,
                 :phone1,
