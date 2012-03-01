@@ -9,4 +9,8 @@ class Referral < ActiveRecord::Base
 
   belongs_to :refagency, :dependent => :destroy
   
+  validates :refagency_id,
+            :referraldate,
+            :clientname,    :presence => true
+  
 end
