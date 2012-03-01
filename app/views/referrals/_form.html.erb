@@ -12,27 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :refagency %><br />
-    <%= f.text_field :refagency %>
+    <%= f.label :refagency, "Referral Agency" %><br />
+    <% @refagencies = Refagency.all.map{|ra| [ra.name, ra.id]} %>
+    <%= f.select(:refagency_id, @refagencies, {:include_blank => "--Select an Agency--"}) %>
   </div>
   <div class="field">
     <%= f.label :details %><br />
     <%= f.text_area :details %>
   </div>
   <div class="field">
-    <%= f.label :numberofadults %><br />
+    <%= f.label :numberofadults, "Number of Adults" %><br />
     <%= f.number_field :numberofadults %>
   </div>
   <div class="field">
-    <%= f.label :numberofchildren %><br />
+    <%= f.label :numberofchildren, "Number of Children" %><br />
     <%= f.number_field :numberofchildren %>
   </div>
   <div class="field">
-    <%= f.label :referraldate %><br />
+    <%= f.label :referraldate, "Referral Date" %><br />
     <%= f.date_select :referraldate %>
   </div>
   <div class="field">
-    <%= f.label :clientname %><br />
+    <%= f.label :clientname, "Client Name" %><br />
     <%= f.text_field :clientname %>
   </div>
   <div class="actions">

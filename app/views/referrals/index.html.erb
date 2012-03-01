@@ -1,33 +1,60 @@
-<h1>Listing referrals</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Refagency</th>
-    <th>Details</th>
-    <th>Numberofadults</th>
-    <th>Numberofchildren</th>
-    <th>Referraldate</th>
-    <th>Clientname</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @referrals.each do |referral| %>
-  <tr>
-    <td><%= referral.refagency %></td>
-    <td><%= referral.details %></td>
-    <td><%= referral.numberofadults %></td>
-    <td><%= referral.numberofchildren %></td>
-    <td><%= referral.referraldate %></td>
-    <td><%= referral.clientname %></td>
-    <td><%= link_to 'Show', referral %></td>
-    <td><%= link_to 'Edit', edit_referral_path(referral) %></td>
-    <td><%= link_to 'Destroy', referral, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Referrals</h1>
+                
+                <div class="body">
 
-<%= link_to 'New Referral', new_referral_path %>
+                    <% if @referrals.nil? || @referrals.empty? %>
+                        
+                        <p>There are no referrals.</p>
+                    
+                    <% else %>   
+
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Agency</th>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+
+                        <% @referrals.each do |referral| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= referral.refagency.name %></td>
+                            <td><%= referral.referraldate %></td>
+                            <td><%= referral.clientname %></td>
+                            <td><%= link_to 'Show', referral %></td>
+                            <td><%= link_to 'Edit', edit_referral_path(referral) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Referral', new_referral_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>  
