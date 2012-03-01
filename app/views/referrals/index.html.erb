@@ -33,7 +33,7 @@
 
                         <% @referrals.each do |referral| %>
                           <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
-                            <td><%= referral.refagency.name %></td>
+                            <td><%= referral.refagency.try(:name) %></td>
                             <td><%= referral.referraldate %></td>
                             <td><%= referral.clientname %></td>
                             <td><%= link_to 'Show', referral %></td>
