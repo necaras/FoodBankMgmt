@@ -1,10 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Description:</b>
-  <%= @refagencycategory.description %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<%= link_to 'Edit', edit_refagencycategory_path(@refagencycategory) %> |
-<%= link_to 'Back', refagencycategories_path %>
+            <div class="content">
+                <h1>Showing Referral Agency Category</h1>
+                
+                <div class="body">
+
+                    <p>
+                      <b>Description:</b>
+                      <%= @refagencycategory.description %>
+                    </p>
+
+                    <%= link_to 'Edit', edit_refagencycategory_path(@refagencycategory) %> |
+                    <%= link_to 'Back', refagencycategories_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>   
