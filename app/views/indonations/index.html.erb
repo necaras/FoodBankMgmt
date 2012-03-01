@@ -1,31 +1,62 @@
-<h1>Listing indonations</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Donor</th>
-    <th>Donationdate</th>
-    <th>Weightdonated</th>
-    <th>Moneydonated</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @indonations.each do |indonation| %>
-  <tr>
-    <td><%= indonation.donor %></td>
-    <td><%= indonation.donationdate %></td>
-    <td><%= indonation.weightdonated %></td>
-    <td><%= indonation.moneydonated %></td>
-    <td><%= indonation.details %></td>
-    <td><%= link_to 'Show', indonation %></td>
-    <td><%= link_to 'Edit', edit_indonation_path(indonation) %></td>
-    <td><%= link_to 'Destroy', indonation, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Incoming Donations</h1>
+                
+                <div class="body">  
+                
+                    <% if @indonations.nil? || @indonations.empty? %>
+                        
+                        <p>There are no incoming donations.</p>
+                    
+                    <% else %>
 
-<%= link_to 'New Indonation', new_indonation_path %>
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Donor</th>
+                            <th>Date</th>
+                            <th>lbs.</th>
+                            <th>$</th>
+                            <th width="6%"></th>
+                            <th width="8%"></th>
+                          </tr>
+
+                        <% @indonations.each do |indonation| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= Donor.find(indonation.donor).name %></td>
+                            <td><%= indonation.donationdate %></td>
+                            <td><%= indonation.weightdonated %></td>
+                            <td><%= indonation.moneydonated %></td>
+                            <td><%= link_to 'Show', indonation %></td>
+                            <td><%= link_to 'Edit', edit_indonation_path(indonation) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Incoming Donation', new_indonation_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div> 

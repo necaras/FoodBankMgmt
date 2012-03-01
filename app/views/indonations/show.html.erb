@@ -1,30 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Donor:</b>
-  <%= @indonation.donor %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<p>
-  <b>Donationdate:</b>
-  <%= @indonation.donationdate %>
-</p>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<p>
-  <b>Weightdonated:</b>
-  <%= @indonation.weightdonated %>
-</p>
+            <div class="content">
+                <h1>Showing Incoming Donation</h1>
+                
+                <div class="body">
 
-<p>
-  <b>Moneydonated:</b>
-  <%= @indonation.moneydonated %>
-</p>
+                    <p>
+                      <b>Donor:</b>
+                      <%= Donor.find(@indonation.donor_id).name %>
+                    </p>
 
-<p>
-  <b>Details:</b>
-  <%= @indonation.details %>
-</p>
+                    <p>
+                      <b>Date:</b>
+                      <%= @indonation.donationdate %>
+                    </p>
+
+                    <p>
+                      <b>Weight of Items Donated:</b>
+                      <%= @indonation.weightdonated %>
+                    </p>
+
+                    <p>
+                      <b>Money Donated:</b>
+                      <%= @indonation.moneydonated %>
+                    </p>
+
+                    <p>
+                      <b>Details:</b>
+                      <%= @indonation.details %>
+                    </p>
 
 
-<%= link_to 'Edit', edit_indonation_path(@indonation) %> |
-<%= link_to 'Back', indonations_path %>
+                    <%= link_to 'Edit', edit_indonation_path(@indonation) %> |
+                    <%= link_to 'Back', indonations_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div> 

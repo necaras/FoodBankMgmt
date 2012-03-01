@@ -13,18 +13,19 @@
 
   <div class="field">
     <%= f.label :donor %><br />
-    <%= f.text_field :donor %>
+    <% @donors = Donor.all.map{|d| [d.name, d.id]} %>
+    <%= f.select(:donor_id, @donors, {:include_blank => "--Select a Donor--"}) %>
   </div>
   <div class="field">
-    <%= f.label :donationdate %><br />
+    <%= f.label :donationdate, "Date of Donation" %><br />
     <%= f.date_select :donationdate %>
   </div>
   <div class="field">
-    <%= f.label :weightdonated %><br />
+    <%= f.label :weightdonated, "Weight of Items Donated" %><br />
     <%= f.text_field :weightdonated %>
   </div>
   <div class="field">
-    <%= f.label :moneydonated %><br />
+    <%= f.label :moneydonated, "Amount of Money Donated" %><br />
     <%= f.text_field :moneydonated %>
   </div>
   <div class="field">
@@ -32,6 +33,11 @@
     <%= f.text_area :details %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:action] == "new"
+            @submit_label = "Create Donation"
+       else
+            @submit_label = "Update Donation"
+       end %>
+    <%= f.submit @submit_label%>
   </div>
 <% end %>
