@@ -1,31 +1,62 @@
-<h1>Listing outdonations</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Donee</th>
-    <th>Donationdate</th>
-    <th>Weightdonated</th>
-    <th>Moneydonated</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @outdonations.each do |outdonation| %>
-  <tr>
-    <td><%= outdonation.donee %></td>
-    <td><%= outdonation.donationdate %></td>
-    <td><%= outdonation.weightdonated %></td>
-    <td><%= outdonation.moneydonated %></td>
-    <td><%= outdonation.details %></td>
-    <td><%= link_to 'Show', outdonation %></td>
-    <td><%= link_to 'Edit', edit_outdonation_path(outdonation) %></td>
-    <td><%= link_to 'Destroy', outdonation, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Outgoing Donations</h1>
+                
+                <div class="body">  
+                
+                    <% if @outdonations.nil? || @outdonations.empty? %>
+                        
+                        <p>There are no outgoing donations.</p>
+                    
+                    <% else %>
 
-<%= link_to 'New Outdonation', new_outdonation_path %>
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Donee</th>
+                            <th>Date</th>
+                            <th>lbs.</th>
+                            <th>$</th>
+                            <th width="6%"></th>
+                            <th width="8%"></th>
+                          </tr>
+
+                        <% @outdonations.each do |outdonation| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= Donee.find(outdonation.donee_id).name %></td>
+                            <td><%= outdonation.donationdate %></td>
+                            <td><%= outdonation.weightdonated %></td>
+                            <td><%= outdonation.moneydonated %></td>
+                            <td><%= link_to 'Show', outdonation %></td>
+                            <td><%= link_to 'Edit', edit_outdonation_path(outdonation) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Outgoing Donation', new_outdonation_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div> 
