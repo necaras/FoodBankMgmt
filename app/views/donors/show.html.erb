@@ -1,50 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Name:</b>
-  <%= @donor.name %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<p>
-  <b>Phone1:</b>
-  <%= @donor.phone1 %>
-</p>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<p>
-  <b>Phone2:</b>
-  <%= @donor.phone2 %>
-</p>
+            <div class="content">
+                <h1>Showing Donor</h1>
+                
+                <div class="body">  
 
-<p>
-  <b>Unit:</b>
-  <%= @donor.unit %>
-</p>
+                    <p>
+                      <b>Name:</b>
+                      <%= @donor.name %>
+                    </p>
 
-<p>
-  <b>Address:</b>
-  <%= @donor.address %>
-</p>
+                    <p>
+                      <b>Phone Number:</b>
+                      <%= @donor.phone1 %>
+                    </p>
 
-<p>
-  <b>Emailaddress:</b>
-  <%= @donor.emailaddress %>
-</p>
+                    <p>
+                      <b>Alternate Phone Number:</b>
+                      <%= @donor.phone2 %>
+                    </p>
 
-<p>
-  <b>Contact:</b>
-  <%= @donor.contact %>
-</p>
+                    <p>
+                      <b>Unit:</b>
+                      <%= @donor.unit %>
+                    </p>
 
-<p>
-  <b>Location:</b>
-  <%= @donor.location %>
-</p>
+                    <p>
+                      <b>Address:</b>
+                      <%= @donor.address %>
+                    </p>
 
-<p>
-  <b>Dtype:</b>
-  <%= @donor.dtype %>
-</p>
+                    <p>
+                      <b>Email Address:</b>
+                      <%= @donor.emailaddress %>
+                    </p>
+
+                    <p>
+                      <b>Contact:</b>
+                      <%= @donor.contact %>
+                    </p>
+
+                    <p>
+                      <b>Location:</b>
+                      <%= @donor.location.get_location_name %>
+                    </p>
+
+                    <p>
+                      <b>donor Type:</b>
+                      <%= Dtype.find(@donor.dtype_id).description unless (@donor.dtype_id.nil? || @donor.dtype_id.empty?) %>
+                    </p>
 
 
-<%= link_to 'Edit', edit_donor_path(@donor) %> |
-<%= link_to 'Back', donors_path %>
+                    <%= link_to 'Edit', edit_donor_path(@donor) %> |
+                    <%= link_to 'Back', donors_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div> 
