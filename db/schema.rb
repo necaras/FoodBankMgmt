@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301010407) do
+ActiveRecord::Schema.define(:version => 20120301212242) do
 
   create_table "client2ctypes", :force => true do |t|
     t.integer  "client_id"
@@ -167,5 +167,41 @@ ActiveRecord::Schema.define(:version => 20120301010407) do
   end
 
   add_index "outdonations", ["donee_id"], :name => "index_outdonations_on_donee_id"
+
+  create_table "refagencies", :force => true do |t|
+    t.integer  "location_id"
+    t.string   "name"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "unit"
+    t.string   "address"
+    t.string   "contact"
+    t.string   "emailaddress"
+    t.integer  "refagencycategory_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "refagencies", ["location_id"], :name => "index_refagencies_on_location_id"
+  add_index "refagencies", ["refagencycategory_id"], :name => "index_refagencies_on_refagencycategory_id"
+
+  create_table "refagencycategories", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "referrals", :force => true do |t|
+    t.integer  "refagency_id"
+    t.text     "details"
+    t.integer  "numberofadults"
+    t.integer  "numberofchildren"
+    t.date     "referraldate"
+    t.string   "clientname"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "referrals", ["refagency_id"], :name => "index_referrals_on_refagency_id"
 
 end

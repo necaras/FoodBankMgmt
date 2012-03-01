@@ -1,0 +1,2 @@
+module RefagenciesHelper
+end

@@ -1,4 +1,10 @@
 Foodbank::Application.routes.draw do
+  resources :referrals
+
+  resources :refagencies
+
+  resources :refagencycategories
+
   resources :outdonations
 
   resources :indonations

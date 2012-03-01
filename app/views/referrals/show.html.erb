@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Refagency:</b>
+  <%= @referral.refagency %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @referral.details %>
+</p>
+
+<p>
+  <b>Numberofadults:</b>
+  <%= @referral.numberofadults %>
+</p>
+
+<p>
+  <b>Numberofchildren:</b>
+  <%= @referral.numberofchildren %>
+</p>
+
+<p>
+  <b>Referraldate:</b>
+  <%= @referral.referraldate %>
+</p>
+
+<p>
+  <b>Clientname:</b>
+  <%= @referral.clientname %>
+</p>
+
+
+<%= link_to 'Edit', edit_referral_path(@referral) %> |
+<%= link_to 'Back', referrals_path %>

@@ -1,0 +1,39 @@
+<h1>Listing refagencies</h1>
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Name</th>
+    <th>Phone1</th>
+    <th>Phone2</th>
+    <th>Unit</th>
+    <th>Address</th>
+    <th>Contact</th>
+    <th>Emailaddress</th>
+    <th>Refagencycategory</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @refagencies.each do |refagency| %>
+  <tr>
+    <td><%= refagency.location %></td>
+    <td><%= refagency.name %></td>
+    <td><%= refagency.phone1 %></td>
+    <td><%= refagency.phone2 %></td>
+    <td><%= refagency.unit %></td>
+    <td><%= refagency.address %></td>
+    <td><%= refagency.contact %></td>
+    <td><%= refagency.emailaddress %></td>
+    <td><%= refagency.refagencycategory %></td>
+    <td><%= link_to 'Show', refagency %></td>
+    <td><%= link_to 'Edit', edit_refagency_path(refagency) %></td>
+    <td><%= link_to 'Destroy', refagency, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Refagency', new_refagency_path %>
