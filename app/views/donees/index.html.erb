@@ -32,7 +32,7 @@
                           </tr>
 
                         <% @donees.each do |donee| %>
-                          <tr>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= donee.name %></td>
                             <td><%= donee.location.get_location_name %></td>
                             <td><%= donee.dtype.description unless (donee.dtype.nil?) %></td>

@@ -32,7 +32,7 @@
                           </tr>
 
                         <% @donors.each do |donor| %>
-                          <tr>
+                            <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= donor.name %></td>
                             <td><%= donor.location.get_location_name %></td>
                             <td><%= donor.dtype.description unless (donor.dtype.nil?) %></td>
