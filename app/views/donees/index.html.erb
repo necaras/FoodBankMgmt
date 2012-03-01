@@ -1,39 +1,62 @@
-<h1>Listing donees</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Phone1</th>
-    <th>Phone2</th>
-    <th>Unit</th>
-    <th>Address</th>
-    <th>Emailaddress</th>
-    <th>Contact</th>
-    <th>Location</th>
-    <th>Dtype</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @donees.each do |donee| %>
-  <tr>
-    <td><%= donee.name %></td>
-    <td><%= donee.phone1 %></td>
-    <td><%= donee.phone2 %></td>
-    <td><%= donee.unit %></td>
-    <td><%= donee.address %></td>
-    <td><%= donee.emailaddress %></td>
-    <td><%= donee.contact %></td>
-    <td><%= donee.location %></td>
-    <td><%= donee.dtype %></td>
-    <td><%= link_to 'Show', donee %></td>
-    <td><%= link_to 'Edit', edit_donee_path(donee) %></td>
-    <td><%= link_to 'Destroy', donee, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Donees</h1>
+                
+                <div class="body">  
+                
+                    <% if @donees.nil? || @donees.empty? %>
+                        
+                        <p>There are no donees.</p>
+                    
+                    <% else %>
+                    
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Type</th>
+                            <th width="6%"></th>
+                            <th width="8%"></th>
+                          </tr>
 
-<%= link_to 'New Donee', new_donee_path %>
+                        <% @donees.each do |donee| %>
+                          <tr>
+                            <td><%= donee.name %></td>
+                            <td><%= donee.location.get_location_name %></td>
+                            <td><%= donee.dtype.description unless (donee.dtype.nil? || donee.dtype.empty?) %></td>
+                            <td><%= link_to 'Show', donee %></td>
+                            <td><%= link_to 'Edit', edit_donee_path(donee) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                        
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Donee', new_donee_path %>
+
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>    

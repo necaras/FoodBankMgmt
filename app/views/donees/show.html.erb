@@ -1,50 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Name:</b>
-  <%= @donee.name %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<p>
-  <b>Phone1:</b>
-  <%= @donee.phone1 %>
-</p>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<p>
-  <b>Phone2:</b>
-  <%= @donee.phone2 %>
-</p>
+            <div class="content">
+                <h1>Showing Donee</h1>
+                
+                <div class="body">  
 
-<p>
-  <b>Unit:</b>
-  <%= @donee.unit %>
-</p>
+                    <p>
+                      <b>Name:</b>
+                      <%= @donee.name %>
+                    </p>
 
-<p>
-  <b>Address:</b>
-  <%= @donee.address %>
-</p>
+                    <p>
+                      <b>Phone Number:</b>
+                      <%= @donee.phone1 %>
+                    </p>
 
-<p>
-  <b>Emailaddress:</b>
-  <%= @donee.emailaddress %>
-</p>
+                    <p>
+                      <b>Alternate Phone Number:</b>
+                      <%= @donee.phone2 %>
+                    </p>
 
-<p>
-  <b>Contact:</b>
-  <%= @donee.contact %>
-</p>
+                    <p>
+                      <b>Unit:</b>
+                      <%= @donee.unit %>
+                    </p>
 
-<p>
-  <b>Location:</b>
-  <%= @donee.location %>
-</p>
+                    <p>
+                      <b>Address:</b>
+                      <%= @donee.address %>
+                    </p>
 
-<p>
-  <b>Dtype:</b>
-  <%= @donee.dtype %>
-</p>
+                    <p>
+                      <b>Email Address:</b>
+                      <%= @donee.emailaddress %>
+                    </p>
+
+                    <p>
+                      <b>Contact:</b>
+                      <%= @donee.contact %>
+                    </p>
+
+                    <p>
+                      <b>Location:</b>
+                      <%= @donee.location.get_location_name %>
+                    </p>
+
+                    <p>
+                      <b>Donee Type:</b>
+                      <%= Dtype.find(@donee.dtype_id).description unless (@donee.dtype_id.nil? || @donee.dtype_id.empty?) %>
+                    </p>
 
 
-<%= link_to 'Edit', edit_donee_path(@donee) %> |
-<%= link_to 'Back', donees_path %>
+                    <%= link_to 'Edit', edit_donee_path(@donee) %> |
+                    <%= link_to 'Back', donees_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div> 

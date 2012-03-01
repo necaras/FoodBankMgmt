@@ -16,11 +16,11 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :phone1 %><br />
+    <%= f.label :phone1, "Primary Phone Number" %><br />
     <%= f.text_field :phone1 %>
   </div>
   <div class="field">
-    <%= f.label :phone2 %><br />
+    <%= f.label :phone2, "Alternate Phone Number" %><br />
     <%= f.text_field :phone2 %>
   </div>
   <div class="field">
@@ -32,20 +32,22 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :emailaddress %><br />
+    <%= f.label :emailaddress, "Email Address" %><br />
     <%= f.text_field :emailaddress %>
   </div>
   <div class="field">
-    <%= f.label :contact %><br />
+    <%= f.label :contact, "Contact Name" %><br />
     <%= f.text_field :contact %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.label :location, "City" %><br />
+    <% @locations = Location.all.map{|l| [l.get_location_name, l.id]} %>
+    <%= f.select(:location_id, @locations, {:include_blank => "--Select a Location--"}) %>
   </div>
   <div class="field">
-    <%= f.label :dtype %><br />
-    <%= f.text_field :dtype %>
+    <%= f.label :dtype, "Donee Type" %><br />
+    <% @dtypes = Dtype.all.map{|dt| [dt.description, dt.id]} %>
+    <%= f.select(:dtype_id, @dtypes, {:include_blank => "--Select a Donee Type--"}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
