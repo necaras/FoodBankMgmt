@@ -1,50 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Location:</b>
-  <%= @refagency.location %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<p>
-  <b>Name:</b>
-  <%= @refagency.name %>
-</p>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<p>
-  <b>Phone1:</b>
-  <%= @refagency.phone1 %>
-</p>
+            <div class="content">
+                <h1>Showing Referral Agency</h1>
+                
+                <div class="body">
 
-<p>
-  <b>Phone2:</b>
-  <%= @refagency.phone2 %>
-</p>
+                    <p>
+                      <b>Location:</b>
+                      <%= @refagency.location.get_location_name %>
+                    </p>
 
-<p>
-  <b>Unit:</b>
-  <%= @refagency.unit %>
-</p>
+                    <p>
+                      <b>Name:</b>
+                      <%= @refagency.name %>
+                    </p>
 
-<p>
-  <b>Address:</b>
-  <%= @refagency.address %>
-</p>
+                    <p>
+                      <b>Primary Phone Number:</b>
+                      <%= @refagency.phone1 %>
+                    </p>
 
-<p>
-  <b>Contact:</b>
-  <%= @refagency.contact %>
-</p>
+                    <p>
+                      <b>Alternate Phone Number:</b>
+                      <%= @refagency.phone2 %>
+                    </p>
 
-<p>
-  <b>Emailaddress:</b>
-  <%= @refagency.emailaddress %>
-</p>
+                    <p>
+                      <b>Unit:</b>
+                      <%= @refagency.unit %>
+                    </p>
 
-<p>
-  <b>Refagencycategory:</b>
-  <%= @refagency.refagencycategory %>
-</p>
+                    <p>
+                      <b>Address:</b>
+                      <%= @refagency.address %>
+                    </p>
+
+                    <p>
+                      <b>Contact:</b>
+                      <%= @refagency.contact %>
+                    </p>
+
+                    <p>
+                      <b>Email Address:</b>
+                      <%= @refagency.emailaddress %>
+                    </p>
+
+                    <p>
+                      <b>Referral Agency Category:</b>
+                      <%= @refagency.refagencycategory.description %>
+                    </p>
 
 
-<%= link_to 'Edit', edit_refagency_path(@refagency) %> |
-<%= link_to 'Back', refagencies_path %>
+                    <%= link_to 'Edit', edit_refagency_path(@refagency) %> |
+                    <%= link_to 'Back', refagencies_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>    

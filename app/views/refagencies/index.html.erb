@@ -1,39 +1,58 @@
-<h1>Listing refagencies</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Location</th>
-    <th>Name</th>
-    <th>Phone1</th>
-    <th>Phone2</th>
-    <th>Unit</th>
-    <th>Address</th>
-    <th>Contact</th>
-    <th>Emailaddress</th>
-    <th>Refagencycategory</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @refagencies.each do |refagency| %>
-  <tr>
-    <td><%= refagency.location %></td>
-    <td><%= refagency.name %></td>
-    <td><%= refagency.phone1 %></td>
-    <td><%= refagency.phone2 %></td>
-    <td><%= refagency.unit %></td>
-    <td><%= refagency.address %></td>
-    <td><%= refagency.contact %></td>
-    <td><%= refagency.emailaddress %></td>
-    <td><%= refagency.refagencycategory %></td>
-    <td><%= link_to 'Show', refagency %></td>
-    <td><%= link_to 'Edit', edit_refagency_path(refagency) %></td>
-    <td><%= link_to 'Destroy', refagency, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Referral Agencies</h1>
+                
+                <div class="body">
 
-<%= link_to 'New Refagency', new_refagency_path %>
+                    <% if @refagencies.nil? || @refagencies.empty? %>
+                        
+                        <p>There are no referral agencies.</p>
+                    
+                    <% else %>    
+
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+
+                        <% @refagencies.each do |refagency| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= refagency.name %></td>
+                            <td><%= refagency.refagencycategory.description %></td>
+                            <td><%= link_to 'Show', refagency %></td>
+                            <td><%= link_to 'Edit', edit_refagency_path(refagency) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Referral Agency', new_refagency_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>                          
