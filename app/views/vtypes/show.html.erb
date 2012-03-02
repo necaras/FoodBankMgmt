@@ -1,10 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Description:</b>
-  <%= @vtype.description %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Showing Volunteer Type</h1>
+                
+                <div class="body"> 
+
+                    <p>
+                      <b>Description:</b>
+                      <%= @vtype.description %>
+                    </p>
 
 
-<%= link_to 'Edit', edit_vtype_path(@vtype) %> |
-<%= link_to 'Back', vtypes_path %>
+                    <%= link_to 'Edit', edit_vtype_path(@vtype) %> |
+                    <%= link_to 'Back', vtypes_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>  

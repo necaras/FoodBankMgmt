@@ -1,4 +1,4 @@
-<%= form_for(@volunteer) do |f| %>
+<%= form_for(@volunteer) do |volunteer_form| %>
   <% if @volunteer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@volunteer.errors.count, "error") %> prohibited this volunteer from being saved:</h2>
@@ -12,74 +12,76 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= volunteer_form.label :vtype, "Volunteer Type" %><br />
+    <% @vtypes = Vtype.all.map{|v| [v.description, v.id]} %>
+    <%= volunteer_form.select(:vtype_id, @vtypes, {:include_blank => "--Select a Type--"}) %>
   </div>
   <div class="field">
-    <%= f.label :vtype %><br />
-    <%= f.text_field :vtype %>
+    <%= volunteer_form.label :gender, "Gender" %><br />
+    <%= volunteer_form.select(:gender, Volunteer::GENDERS) %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= volunteer_form.label :firstname, "First Name" %><br />
+    <%= volunteer_form.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+    <%= volunteer_form.label :lastname, "Last Name" %><br />
+    <%= volunteer_form.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
+    <%= volunteer_form.label :middlename, "Middle Name" %><br />
+    <%= volunteer_form.text_field :middlename %>
   </div>
   <div class="field">
-    <%= f.label :middlename %><br />
-    <%= f.text_field :middlename %>
+    <%= volunteer_form.label :unit %><br />
+    <%= volunteer_form.text_field :unit %>
   </div>
   <div class="field">
-    <%= f.label :unit %><br />
-    <%= f.text_field :unit %>
+    <%= volunteer_form.label :address %><br />
+    <%= volunteer_form.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= volunteer_form.label :location, "City" %><br />
+    <% @locations = Location.all.map{|l| [l.get_location_name, l.id]} %>
+    <%= volunteer_form.select(:location_id, @locations, {:include_blank => "--Select a Location--"}) %>
   </div>
   <div class="field">
-    <%= f.label :phone1 %><br />
-    <%= f.text_field :phone1 %>
+    <%= volunteer_form.label :phone1, "Primary Phone Number" %><br />
+    <%= volunteer_form.text_field :phone1 %>
   </div>
   <div class="field">
-    <%= f.label :phone2 %><br />
-    <%= f.text_field :phone2 %>
+    <%= volunteer_form.label :phone2, "Alternate Phone Number" %><br />
+    <%= volunteer_form.text_field :phone2 %>
   </div>
   <div class="field">
-    <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate %>
+    <%= volunteer_form.label :birthdate, "Birth Date" %><br />
+    <%= volunteer_form.date_select :birthdate %>
   </div>
   <div class="field">
-    <%= f.label :startdate %><br />
-    <%= f.date_select :startdate %>
+    <%= volunteer_form.label :startdate, "Start Date" %><br />
+    <%= volunteer_form.date_select :startdate %>
   </div>
   <div class="field">
-    <%= f.label :emailaddress %><br />
-    <%= f.text_field :emailaddress %>
+    <%= volunteer_form.label :emailaddress, "Email Address" %><br />
+    <%= volunteer_form.text_field :emailaddress %>
   </div>
   <div class="field">
-    <%= f.label :postalcode %><br />
-    <%= f.text_field :postalcode %>
+    <%= volunteer_form.label :postalcode, "Postal Code" %><br />
+    <%= volunteer_form.text_field :postalcode %>
   </div>
   <div class="field">
-    <%= f.label :emergcontactname %><br />
-    <%= f.text_field :emergcontactname %>
+    <%= volunteer_form.label :emergcontactname, "Emergency Contact Name" %><br />
+    <%= volunteer_form.text_field :emergcontactname %>
   </div>
   <div class="field">
-    <%= f.label :emergcontactphone %><br />
-    <%= f.text_field :emergcontactphone %>
+    <%= volunteer_form.label :emergcontactphone, "Emergency Contact Phone" %><br />
+    <%= volunteer_form.text_field :emergcontactphone %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br />
-    <%= f.text_area :notes %>
+    <%= volunteer_form.label :notes %><br />
+    <%= volunteer_form.text_area :notes %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= volunteer_form.submit %>
   </div>
 <% end %>

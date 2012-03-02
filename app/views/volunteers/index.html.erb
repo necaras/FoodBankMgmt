@@ -1,55 +1,59 @@
-<h1>Listing volunteers</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Location</th>
-    <th>Vtype</th>
-    <th>Gender</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Middlename</th>
-    <th>Unit</th>
-    <th>Address</th>
-    <th>Phone1</th>
-    <th>Phone2</th>
-    <th>Birthdate</th>
-    <th>Startdate</th>
-    <th>Emailaddress</th>
-    <th>Postalcode</th>
-    <th>Emergcontactname</th>
-    <th>Emergcontactphone</th>
-    <th>Notes</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @volunteers.each do |volunteer| %>
-  <tr>
-    <td><%= volunteer.location %></td>
-    <td><%= volunteer.vtype %></td>
-    <td><%= volunteer.gender %></td>
-    <td><%= volunteer.firstname %></td>
-    <td><%= volunteer.lastname %></td>
-    <td><%= volunteer.middlename %></td>
-    <td><%= volunteer.unit %></td>
-    <td><%= volunteer.address %></td>
-    <td><%= volunteer.phone1 %></td>
-    <td><%= volunteer.phone2 %></td>
-    <td><%= volunteer.birthdate %></td>
-    <td><%= volunteer.startdate %></td>
-    <td><%= volunteer.emailaddress %></td>
-    <td><%= volunteer.postalcode %></td>
-    <td><%= volunteer.emergcontactname %></td>
-    <td><%= volunteer.emergcontactphone %></td>
-    <td><%= volunteer.notes %></td>
-    <td><%= link_to 'Show', volunteer %></td>
-    <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-    <td><%= link_to 'Destroy', volunteer, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Volunteers</h1>
+                
+                <div class="body">  
+                
+                    <% if @volunteers.nil? || @volunteers.empty? %>
+                        
+                        <p>There are no volunteers.</p>
+                    
+                    <% else %>
 
-<%= link_to 'New Volunteer', new_volunteer_path %>
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+
+                        <% @volunteers.each do |volunteer| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= volunteer.get_volunteer_name %></td>
+                            <td><%= volunteer.vtype.try(:description) %></td>
+                            <td><%= link_to 'Show', volunteer %></td>
+                            <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Volunteer', new_volunteer_path %>
+                    
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>   

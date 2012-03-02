@@ -19,6 +19,7 @@ class Volunteer < ActiveRecord::Base
 #   notes               text
 
   validates     :location_id,
+                :vtype_id,
                 :gender,
                 :firstname,
                 :lastname,
@@ -28,9 +29,25 @@ class Volunteer < ActiveRecord::Base
                 :startdate,
                 :postalcode,
                 :emergcontactname,
-                :emergcontactphone,     :presence => true 
+                :emergcontactphone,     :presence => true
+                
+  validates :gender,      :presence => true,
+                          :inclusion => { :in => %w(M F), :message => "must either be (M)ale or (F)emale." }                
 
   belongs_to    :location
   belongs_to    :vtype
   has_many      :vhours, :dependent => :destroy
+  
+  GENDERS = ['M','F']
+  
+    #method get_volunteer_name
+    #returns string of volunteer name formatted 'Lastname, firstname'
+    def get_volunteer_name
+        @volunteer = Volunteer.find_by_id(self.id)
+        if @volunteer.nil? 
+            @volunteer_name = "-None Specified-"
+        else
+            @volunteer_name = "#{@volunteer.try(:lastname)}, #{@volunteer.try(:firstname)}"
+        end
+    end
 end
