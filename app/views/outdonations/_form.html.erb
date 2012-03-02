@@ -15,7 +15,7 @@
 
   <div class="field">
     <% if @donee_readonly %>
-        <%= donee_form.text_field :donee_id, {:readonly => true, :hidden => true, :value => params[:donee_id]} %>
+        <%= donee_form.hidden_field :donee_id, {:readonly => true, :hidden => true, :value => params[:donee_id]} %>
         
     <% else %>
         <%= donee_form.label :donee_id, "Donee" %><br />

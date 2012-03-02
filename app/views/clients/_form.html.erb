@@ -18,7 +18,7 @@
 
   <div class="field">
     <% if @family_readonly %>
-        <%= client_form.text_field :family_id, {:readonly => true, :hidden => true, :value => params[:family_id]} %>
+        <%= client_form.hidden_field :family_id, {:readonly => true, :hidden => true, :value => params[:family_id]} %>
         
     <% else %>
         <%= client_form.label :family_id, "Family" %><br />

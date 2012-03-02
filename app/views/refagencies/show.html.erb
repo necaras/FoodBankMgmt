@@ -58,7 +58,7 @@
 
                     <p>
                       <b>Referral Agency Category:</b>
-                      <%= @refagency.refagencycategory.description %>
+                      <%= @refagency.refagencycategory.try(:description) %>
                     </p>
                     
                     <% if @refagency.referrals.nil? || @refagency.referrals.empty? %>

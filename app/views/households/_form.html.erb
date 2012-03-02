@@ -15,7 +15,7 @@
 
   <div class="field">
     <% if @community_readonly %>
-        <%= household_form.text_field :community_id, {:readonly => true, :hidden => true, :value => params[:community_id]} %>
+        <%= household_form.hidden_field :community_id, {:readonly => true, :hidden => true, :value => params[:community_id]} %>
         
     <% else %>
         <%= household_form.label :community_id %><br />

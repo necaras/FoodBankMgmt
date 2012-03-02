@@ -15,7 +15,7 @@
 
   <div class="field">
     <% if @refagency_readonly %>
-        <%= refagency_form.text_field :refagency_id, {:readonly => true, :hidden => true, :value => params[:refagency_id]} %>
+        <%= refagency_form.hidden_field :refagency_id, {:readonly => true, :hidden => true, :value => params[:refagency_id]} %>
         
     <% else %>
         <%= refagency_form.label :refagency_id, "Referral Agency" %><br />

@@ -15,7 +15,7 @@
 
   <div class="field">
     <% if @location_readonly %>
-        <%= community_form.text_field :location_id, {:readonly => true, :hidden => true, :value => params[:location_id]} %>
+        <%= community_form.hidden_field :location_id, {:readonly => true, :hidden => true, :value => params[:location_id]} %>
         
     <% else %>
         <%= community_form.label :location_id, "Location" %><br />

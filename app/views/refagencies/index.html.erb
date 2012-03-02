@@ -33,7 +33,7 @@
                         <% @refagencies.each do |refagency| %>
                           <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= refagency.name %></td>
-                            <td><%= refagency.refagencycategory.description %></td>
+                            <td><%= refagency.refagencycategory.try(:description) %></td>
                             <td><%= link_to 'Show', refagency %></td>
                             <td><%= link_to 'Edit', edit_refagency_path(refagency) %></td>
                           </tr>
