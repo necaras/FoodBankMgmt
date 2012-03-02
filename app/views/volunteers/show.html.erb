@@ -90,7 +90,29 @@
                       <b>Notes:</b>
                       <%= @volunteer.notes %>
                     </p>
+                    
+                    <% if @volunteer.vhours.nil? || @volunteer.vhours.empty? %>
+                    
+                        <p>There are no volunteer hour entries for this volunteer.</p>
+                    
+                    <% else %>
+                    
+                        <h2>Volunteer Hours:</h2>
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Volunteer</th>
+                            <th>Date</th>
+                            <th>Hrs.</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+                        <%= render @volunteer.vhours %>
+                        </table>
+                        
+                    <% end %>
 
+                    <%= link_to 'Add New Hours Entry for Volunteer', new_referral_path(:volunteer_id => @volunteer.id) %>
+                    <br /><br /> 
 
                     <%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
                     <%= link_to 'Back', volunteers_path %>

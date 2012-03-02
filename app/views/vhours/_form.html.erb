@@ -11,16 +11,25 @@
     </div>
   <% end %>
 
+
+  <% @volunteer_readonly = (not params[:volunteer_id].nil?) && (params[:action] == "new") %>
+
   <div class="field">
-    <%= f.label :volunteer %><br />
-    <%= f.text_field :volunteer %>
+    <% if @volunteer_readonly %>
+        <%= f.text_field :volunteer_id, {:readonly => true, :hidden => true, :value => params[:volunteer_id]} %>
+        
+    <% else %>
+        <%= f.label :volunteer_id, "Volunteer" %><br />
+        <%  @volunteers = Volunteer.all.map{|v| [v.get_volunteer_name, v.id]} %>
+        <%= f.select(:volunteer_id, @volunteers, {:include_blank => "--Select a Volunteer--"}) %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :date %><br />
     <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.label :hoursworked %><br />
+    <%= f.label :hoursworked, "Hours Worked" %><br />
     <%= f.text_field :hoursworked %>
   </div>
   <div class="field">
@@ -28,6 +37,11 @@
     <%= f.text_area :details %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:action] == "new"
+            @submit_label = "Create Hours Entry"
+       else
+            @submit_label = "Update Hours Entry"
+       end %>
+    <%= f.submit @submit_label%>
   </div>
 <% end %>

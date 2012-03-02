@@ -1,0 +1,7 @@
+<tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+    <td><%= vhour.volunteer.get_volunteer_name %></td>
+    <td><%= vhour.date %></td>
+    <td><%= vhour.hoursworked %></td>
+    <td><%= link_to 'Show', vhour %></td>
+    <td><%= link_to 'Edit', edit_vhour_path(vhour) %></td>
+</tr>

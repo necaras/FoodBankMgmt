@@ -1,29 +1,61 @@
-<h1>Listing vhours</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Volunteer</th>
-    <th>Date</th>
-    <th>Hoursworked</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @vhours.each do |vhour| %>
-  <tr>
-    <td><%= vhour.volunteer %></td>
-    <td><%= vhour.date %></td>
-    <td><%= vhour.hoursworked %></td>
-    <td><%= vhour.details %></td>
-    <td><%= link_to 'Show', vhour %></td>
-    <td><%= link_to 'Edit', edit_vhour_path(vhour) %></td>
-    <td><%= link_to 'Destroy', vhour, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Volunteer Hours</h1>
+                
+                <div class="body">  
+                
+                    <% if @vhours.nil? || @vhours.empty? %>
+                        
+                        <p>There are no volunteer hours.</p>
+                    
+                    <% else %>
 
-<%= link_to 'New Vhour', new_vhour_path %>
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Volunteer</th>
+                            <th>Date</th>
+                            <th>Hrs.</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+
+                        <% @vhours.each do |vhour| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= vhour.volunteer.get_volunteer_name %></td>
+                            <td><%= vhour.date %></td>
+                            <td><%= vhour.hoursworked %></td>
+                            <td><%= link_to 'Show', vhour %></td>
+                            <td><%= link_to 'Edit', edit_vhour_path(vhour) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                    
+                    <% end %>
+
+                    <br />
+
+                    <%= link_to 'New Volunteer Hours Entry', new_vhour_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>                      
