@@ -8,6 +8,7 @@ class Referral < ActiveRecord::Base
 #   clientname          string
 
   belongs_to :refagency, :dependent => :destroy
+  has_many   :foodhampers, :dependent => :destroy
   
   validates :refagency_id,
             :referraldate,

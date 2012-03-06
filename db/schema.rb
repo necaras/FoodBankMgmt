@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301232358) do
+ActiveRecord::Schema.define(:version => 20120306225619) do
 
   create_table "client2ctypes", :force => true do |t|
     t.integer  "client_id"
@@ -117,6 +117,20 @@ ActiveRecord::Schema.define(:version => 20120301232358) do
 
   add_index "families", ["fstate_id"], :name => "index_families_on_fstate_id"
   add_index "families", ["primaryclient_id"], :name => "index_families_on_primaryclient_id"
+
+  create_table "foodhampers", :force => true do |t|
+    t.float    "weight"
+    t.date     "pickupdate"
+    t.string   "pickupperson"
+    t.integer  "referral_id"
+    t.integer  "family_id"
+    t.text     "details"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "foodhampers", ["family_id"], :name => "index_foodhampers_on_family_id"
+  add_index "foodhampers", ["referral_id"], :name => "index_foodhampers_on_referral_id"
 
   create_table "fstates", :force => true do |t|
     t.string   "description"

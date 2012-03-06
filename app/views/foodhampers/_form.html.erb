@@ -1,0 +1,41 @@
+<%= form_for(@foodhamper) do |f| %>
+  <% if @foodhamper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@foodhamper.errors.count, "error") %> prohibited this foodhamper from being saved:</h2>
+
+      <ul>
+      <% @foodhamper.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :pickupdate %><br />
+    <%= f.date_select :pickupdate %>
+  </div>
+  <div class="field">
+    <%= f.label :pickupperson %><br />
+    <%= f.text_field :pickupperson %>
+  </div>
+  <div class="field">
+    <%= f.label :referral %><br />
+    <%= f.text_field :referral %>
+  </div>
+  <div class="field">
+    <%= f.label :family %><br />
+    <%= f.text_field :family %>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br />
+    <%= f.text_area :details %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

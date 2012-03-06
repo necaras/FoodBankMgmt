@@ -1,4 +1,6 @@
 Foodbank::Application.routes.draw do
+  resources :foodhampers
+
   resources :vhours
 
   resources :volunteers

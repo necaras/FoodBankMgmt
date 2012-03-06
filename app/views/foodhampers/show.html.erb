@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Weight:</b>
+  <%= @foodhamper.weight %>
+</p>
+
+<p>
+  <b>Pickupdate:</b>
+  <%= @foodhamper.pickupdate %>
+</p>
+
+<p>
+  <b>Pickupperson:</b>
+  <%= @foodhamper.pickupperson %>
+</p>
+
+<p>
+  <b>Referral:</b>
+  <%= @foodhamper.referral %>
+</p>
+
+<p>
+  <b>Family:</b>
+  <%= @foodhamper.family %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @foodhamper.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_foodhamper_path(@foodhamper) %> |
+<%= link_to 'Back', foodhampers_path %>

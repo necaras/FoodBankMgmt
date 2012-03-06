@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  weight: 1.5
+  pickupdate: 2012-03-06
+  pickupperson: MyString
+  referral: 
+  family: 
+  details: MyText
+
+two:
+  weight: 1.5
+  pickupdate: 2012-03-06
+  pickupperson: MyString
+  referral: 
+  family: 
+  details: MyText
