@@ -1,79 +1,90 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Family</h1>
-                
-                <div class="body">  
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div> <!--date-->
 
-                    <p>
-                      <b>Primary Client:</b>
-                      <%= @family.get_primaryclient_name %>
-                    </p>
+			<div class="content">
+				<h1>Showing Family</h1>
 
-                    <p>
-                      <b>Comment:</b>
-                      <%= @family.comment %>
-                    </p>
+				<div class="body">  
 
-                    <p>
-                      <b>Red Flag:</b>
-                      <%= @family.redflag %>
-                    </p>
+					<p>
+					<b>Primary Client:</b>
+					<%= @family.get_primaryclient_name %>
+					</p>
 
-                    <p>
-                      <b>Primary Phone:</b>
-                      <%= @family.phone1 %>
-                    </p>
+					<p>
+					<b>Comment:</b>
+					<%= @family.comment %>
+					</p>
 
-                    <p>
-                      <b>Alternate Phone:</b>
-                      <%= @family.phone2 %>
-                    </p>
-                    
-                    <% if @family.clients.nil? || @family.clients.empty? %>
-                    
-                        <p>There are no members in this family.</p>
-                    
-                    <% else %>                    
-                        <h2>Family Members</h2>
-                        <table>
-                          <tr>
-                            <th width="64%" style="text-align: left;">Name</th>
-                            <th width="26%">Birth Date</th>
-                            <th width="8%"></th>
-                            <th width="6%"></th>
-                          </tr>
-                        <%= render @family.clients %>
-                        </table>
-                    
-                    <% end %>
+					<p>
+					<b>Red Flag:</b>
+					<%= @family.redflag %>
+					</p>
 
-                    <%= link_to 'Add New Client to Family', new_client_path(:family_id => @family.id) %>
-                    <br /><br />
+					<p>
+					<b>Primary Phone:</b>
+					<%= @family.phone1 %>
+					</p>
 
-                    <%= link_to 'Edit', edit_family_path(@family) %> |
-                    <%= link_to 'Back', families_path %>
+					<p>
+					<b>Alternate Phone:</b>
+					<%= @family.phone2 %>
+					</p>
 
-                </div>
-            </div>
-        </div>
-	</div>
+					<%= link_to 'Edit', edit_family_path(@family) %> |
+					<%= link_to 'Back', families_path %>
 
-    <%= render :partial => "home/navigation" %>
-	
+				</div> <!--body-->
+			</div> <!--content-->
+		</div><!--item-->
+		
+		<div class="item">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
+			<div class="content">
+				<h1>Family Members</h1>
+
+				<div class="body">  
+					<% if @family.clients.nil? || @family.clients.empty? %>
+
+					<p>There are no members in this family.</p>
+
+					<% else %>                    
+					<table>
+					<tr>
+					<th width="64%" style="text-align: left;">Name</th>
+					<th width="26%">Birth Date</th>
+					<th width="8%"></th>
+					<th width="6%"></th>
+					</tr>
+					<%= render @family.clients %>
+					</table>
+
+					<% end %>
+
+					<%= link_to 'Add New Client to Family', new_client_path(:family_id => @family.id) %>
+				</div> <!--body-->
+			</div> <!--content-->
+		</div> <!--item-->
+
+	</div> <!--main-->
+
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>  
+</div>  <!--container-->
