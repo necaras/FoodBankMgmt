@@ -17,7 +17,7 @@ class Referral < ActiveRecord::Base
             :clientname,    :presence => true
   def get_referral_summary
     @refagencyname = Refagency.find_by_id(self.refagency_id).name
-    get_referral_summary = "#{@refagencyname}|#{clientname}(#{self.numberofadults}/#{self.numberofchildren})"
+    get_referral_summary = "#{@refagencyname}: #{clientname} (A:#{self.numberofadults}/C:#{self.numberofchildren})"
   end
   
 end

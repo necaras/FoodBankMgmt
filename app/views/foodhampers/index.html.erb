@@ -34,8 +34,8 @@
                         <% @foodhampers.each do |foodhamper| %>
                           <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= foodhamper.pickupdate %></td>
-                            <td><%= foodhamper.referral %></td>
-                            <td><%= foodhamper.family %></td>
+                            <td><%= foodhamper.referral.get_referral_summary %></td>
+                            <td><%= foodhamper.family.get_family_summary %></td>
                             <td><%= link_to 'Show', foodhamper %></td>
                             <td><%= link_to 'Edit', edit_foodhamper_path(foodhamper) %></td>
                           </tr>
