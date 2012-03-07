@@ -14,11 +14,12 @@ class Household < ActiveRecord::Base
   has_many      :families
   
   def get_household_address
-	@address = ""
-	@address << "#{self.unit}, " unless (self.unit.nil? || self.unit.empty?)
-	@address << "#{self.address} 
-		(#{Community.find(self.community_id).name}), 
-		#{Location.find(Community.find(self.community_id).id).get_location_name}"
+    if (self.unit.nil? || self.unit.empty?)
+      get_household_address = 
+        get_household_address = "#{self.unit}, " unless 
+        get_household_address <<"#{self.address} 
+                                    (#{Community.find(self.community_id).name}), 
+                                    #{Location.find(Community.find(self.community_id).id).get_location_name}"
   end
 end
 
