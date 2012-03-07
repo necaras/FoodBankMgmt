@@ -59,22 +59,54 @@
 				<div class="body">  
 					<% if @family.clients.nil? || @family.clients.empty? %>
 
-					<p>There are no members in this family.</p>
+						<p>There are no members in this family.</p>
 
-					<% else %>                    
-					<table>
-					<tr>
-					<th width="64%" style="text-align: left;">Name</th>
-					<th width="26%">Birth Date</th>
-					<th width="8%"></th>
-					<th width="6%"></th>
-					</tr>
-					<%= render @family.clients %>
-					</table>
+					<% else %>
+						<table>
+							<tr>
+								<th width="64%" style="text-align: left;">Name</th>
+								<th width="26%">Birth Date</th>
+								<th width="8%"></th>
+								<th width="6%"></th>
+							</tr>
+							<%= render @family.clients %>
+						</table>
 
 					<% end %>
 
 					<%= link_to 'Add New Client to Family', new_client_path(:family_id => @family.id) %>
+				</div> <!--body-->
+			</div> <!--content-->
+		</div> <!--item-->
+		
+		<div class="item">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
+			<div class="content">
+				<h1>Food Hampers</h1>
+
+				<div class="body">  
+					<% if @family.foodhampers.nil? || @family.foodhampers.empty? %>
+
+					<p>This family has not had any food hampers.</p>
+
+					<% else %>
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Date</th>
+                            <th>Referral</th>
+                            <th>Family</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+							<%= render @family.foodhampers %>
+						</table>
+
+					<% end %>
+
+					<%= link_to 'Add New Hamper to Family', new_foodhamper_path(:family_id => @family.id) %>
 				</div> <!--body-->
 			</div> <!--content-->
 		</div> <!--item-->

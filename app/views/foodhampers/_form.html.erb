@@ -10,7 +10,25 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <% @family_readonly = (not params[:family_id].nil?) && (params[:action] == "new") %>
+  <div class="field">
+    <% if @family_readonly %>
+        <%= foodhamper_form.hidden_field :family_id, {:readonly => true, :hidden => true, :value => params[:family_id]} %>
+        
+    <% else %>
+		<%= foodhamper_form.label :family %><br />
+		<% @families = Family.all.map{|f| [f.comment, f.id]} %>
+		<%= foodhamper_form.select(:family_id, @families, {:include_blank => "--Select a Family--"}) %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= foodhamper_form.label :referral %><br />
+    <% @referral_find_string = "SELECT * FROM referrals WHERE id NOT IN (SELECT referral_id FROM foodhampers GROUP BY referral_id)" %>
+    <% @referrals = Referral.find_by_sql(@referral_find_string).map{|r| [r.get_referral_summary, r.id]} %>
+    <%= foodhamper_form.select(:referral_id, @referrals, {:include_blank => "--Select a Referral--"}) %>
+  </div>
 
   <div class="field">
     <%= foodhamper_form.label :pickupdate, "Pickup Date" %><br />
@@ -20,16 +38,6 @@
     <%= foodhamper_form.label :pickupperson, "Pickup Person" %><br />
     <%= foodhamper_form.text_field :pickupperson %>
   </div>
-  <div class="field">
-    <%= foodhamper_form.label :referral %><br />
-    <% @referrals = Referral.all.map{|r| [r.get_referral_summary, r.id]} %>
-    <%= foodhamper_form.select(:referral_id, @referrals, {:include_blank => "--Select a Referral--"}) %>
-  </div>
-  <div class="field">
-    <%= foodhamper_form.label :family %><br />
-    <% @families = Family.all.map{|f| [f.comment, f.id]} %>
-    <%= foodhamper_form.select(:family_id, @families, {:include_blank => "--Select a Family--"}) %>
-  </div>  
   <div class="field">
     <%= foodhamper_form.label :weight %><br />
     <%= foodhamper_form.text_field :weight %>
