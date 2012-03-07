@@ -1,33 +1,61 @@
-<h1>Listing foodhampers</h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>Weight</th>
-    <th>Pickupdate</th>
-    <th>Pickupperson</th>
-    <th>Referral</th>
-    <th>Family</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<% @foodhampers.each do |foodhamper| %>
-  <tr>
-    <td><%= foodhamper.weight %></td>
-    <td><%= foodhamper.pickupdate %></td>
-    <td><%= foodhamper.pickupperson %></td>
-    <td><%= foodhamper.referral %></td>
-    <td><%= foodhamper.family %></td>
-    <td><%= foodhamper.details %></td>
-    <td><%= link_to 'Show', foodhamper %></td>
-    <td><%= link_to 'Edit', edit_foodhamper_path(foodhamper) %></td>
-    <td><%= link_to 'Destroy', foodhamper, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<br />
+            <div class="content">
+                <h1>Listing Food Hampers</h1>
+                
+                <div class="body">
 
-<%= link_to 'New Foodhamper', new_foodhamper_path %>
+                    <% if @foodhampers.nil? || @foodhampers.empty? %>
+                        
+                        <p>There are no food hampers.</p>
+                    
+                    <% else %>    
+
+                        <table width="100%">
+                          <tr width="100%">
+                            <th>Date</th>
+                            <th>Referral</th>
+                            <th>Family</th>
+                            <th width="8%"></th>
+                            <th width="6%"></th>
+                          </tr>
+
+                        <% @foodhampers.each do |foodhamper| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+                            <td><%= foodhamper.pickupdate %></td>
+                            <td><%= foodhamper.referral %></td>
+                            <td><%= foodhamper.family %></td>
+                            <td><%= link_to 'Show', foodhamper %></td>
+                            <td><%= link_to 'Edit', edit_foodhamper_path(foodhamper) %></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                        
+                    <% end %>
+
+                        <br />
+
+                        <%= link_to 'New Hamper', new_foodhamper_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>    

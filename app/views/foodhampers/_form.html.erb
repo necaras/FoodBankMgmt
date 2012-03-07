@@ -1,7 +1,7 @@
-<%= form_for(@foodhamper) do |f| %>
+<%= form_for(@foodhamper) do |foodhamper_form| %>
   <% if @foodhamper.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@foodhamper.errors.count, "error") %> prohibited this foodhamper from being saved:</h2>
+      <h2><%= pluralize(@foodhamper.errors.count, "error") %> prohibited this food hamper from being saved:</h2>
 
       <ul>
       <% @foodhamper.errors.full_messages.each do |msg| %>
@@ -11,31 +11,39 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
+    <%= foodhamper_form.label :pickupdate, "Pickup Date" %><br />
+    <%= foodhamper_form.date_select :pickupdate %>
   </div>
   <div class="field">
-    <%= f.label :pickupdate %><br />
-    <%= f.date_select :pickupdate %>
+    <%= foodhamper_form.label :pickupperson, "Pickup Person" %><br />
+    <%= foodhamper_form.text_field :pickupperson %>
   </div>
   <div class="field">
-    <%= f.label :pickupperson %><br />
-    <%= f.text_field :pickupperson %>
+    <%= foodhamper_form.label :referral %><br />
+    <% @referrals = Referral.all.map{|r| [r.get_referral_summary, r.id]} %>
+    <%= foodhamper_form.select(:referral_id, @referrals, {:include_blank => "--Select a Referral--"}) %>
   </div>
   <div class="field">
-    <%= f.label :referral %><br />
-    <%= f.text_field :referral %>
+    <%= foodhamper_form.label :family %><br />
+    <% @families = Family.all.map{|f| [f.comment, f.id]} %>
+    <%= foodhamper_form.select(:family_id, @families, {:include_blank => "--Select a Family--"}) %>
+  </div>  
+  <div class="field">
+    <%= foodhamper_form.label :weight %><br />
+    <%= foodhamper_form.text_field :weight %>
   </div>
   <div class="field">
-    <%= f.label :family %><br />
-    <%= f.text_field :family %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br />
-    <%= f.text_area :details %>
+    <%= foodhamper_form.label :details %><br />
+    <%= foodhamper_form.text_area :details %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:action] == "new"
+            @submit_label = "Create Hamper"
+       else
+            @submit_label = "Update Hamper"
+       end %>
+    <%= foodhamper_form.submit @submit_label%>
   </div>
 <% end %>

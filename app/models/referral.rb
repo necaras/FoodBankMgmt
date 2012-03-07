@@ -12,6 +12,12 @@ class Referral < ActiveRecord::Base
   
   validates :refagency_id,
             :referraldate,
+            :numberofadults,
+            :numberofchildren,
             :clientname,    :presence => true
+  def get_referral_summary
+    @refagencyname = Refagency.find_by_id(self.refagency_id).name
+    get_referral_summary = "#{@refagencyname}|#{clientname}(#{self.numberofadults}/#{self.numberofchildren})"
+  end
   
 end

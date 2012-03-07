@@ -1,35 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Weight:</b>
-  <%= @foodhamper.weight %>
-</p>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-<p>
-  <b>Pickupdate:</b>
-  <%= @foodhamper.pickupdate %>
-</p>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-<p>
-  <b>Pickupperson:</b>
-  <%= @foodhamper.pickupperson %>
-</p>
+            <div class="content">
+                <h1>Showing Food Hamper</h1>
+                
+                <div class="body">
 
-<p>
-  <b>Referral:</b>
-  <%= @foodhamper.referral %>
-</p>
+                    <p>
+                      <b>Weight:</b>
+                      <%= @foodhamper.weight %>
+                    </p>
 
-<p>
-  <b>Family:</b>
-  <%= @foodhamper.family %>
-</p>
+                    <p>
+                      <b>Pickup Date:</b>
+                      <%= @foodhamper.pickupdate %>
+                    </p>
 
-<p>
-  <b>Details:</b>
-  <%= @foodhamper.details %>
-</p>
+                    <p>
+                      <b>Pickup Person:</b>
+                      <%= @foodhamper.pickupperson %>
+                    </p>
+
+                    <p>
+                      <b>Referral:</b>
+                      <%= @foodhamper.referral %>
+                    </p>
+
+                    <p>
+                      <b>Family:</b>
+                      <%= @foodhamper.family %>
+                    </p>
+
+                    <p>
+                      <b>Details:</b>
+                      <%= @foodhamper.details %>
+                    </p>
 
 
-<%= link_to 'Edit', edit_foodhamper_path(@foodhamper) %> |
-<%= link_to 'Back', foodhampers_path %>
+                    <%= link_to 'Edit', edit_foodhamper_path(@foodhamper) %> |
+                    <%= link_to 'Back', foodhampers_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>    
