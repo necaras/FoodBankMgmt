@@ -25,4 +25,13 @@ class Family < ActiveRecord::Base
             @client_name = @client.get_client_name
         end
     end
+    
+    #method get_family_summary
+    #returns formatted string containing family id, primary client name, family size
+    def get_family_summary
+    	@clients = Client.find_all_by_family_id(self.id)
+        @familycount = @clients.count
+    	@get_family_summary = "##{self.id}: #{self.get_primaryclient_name} (#{@familycount} member#{"s" unless @familycount==1})"
+    
+    end
 end

@@ -18,16 +18,19 @@
         
     <% else %>
 		<%= foodhamper_form.label :family %><br />
-		<% @families = Family.all.map{|f| [f.comment, f.id]} %>
+		<% @families = Family.all.map{|f| [f.get_family_summary, f.id]} %>
 		<%= foodhamper_form.select(:family_id, @families, {:include_blank => "--Select a Family--"}) %>
     <% end %>
   </div>
   
   <div class="field">
-    <%= foodhamper_form.label :referral %><br />
-    <% @referral_find_string = "SELECT * FROM referrals WHERE id NOT IN (SELECT referral_id FROM foodhampers GROUP BY referral_id)" %>
-    <% @referrals = Referral.find_by_sql(@referral_find_string).map{|r| [r.get_referral_summary, r.id]} %>
-    <%= foodhamper_form.select(:referral_id, @referrals, {:include_blank => "--Select a Referral--"}) %>
+    	<%= foodhamper_form.label :referral %><br />
+    	<% 	@current_referral_id = @foodhamper.referral_id
+    		if @current_referral_id.nil?
+    			@current_referral_id = 0
+    		end %>
+    	<% @referrals = Referral.where("id NOT IN (SELECT referral_id FROM foodhampers GROUP BY referral_id) OR id = #{@current_referral_id}").map{|r| [r.get_referral_summary, r.id]} %>
+		<%= foodhamper_form.select(:referral_id, @referrals, {:include_blank => "--Select a Referral--"}) %>
   </div>
 
   <div class="field">
