@@ -1,4 +1,6 @@
 class FoodhampersController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /foodhampers
   # GET /foodhampers.json
   def index

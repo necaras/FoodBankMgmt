@@ -1,4 +1,6 @@
 class DoneesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /donees
   # GET /donees.json
   def index

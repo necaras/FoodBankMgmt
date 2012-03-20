@@ -1,4 +1,6 @@
 class CtypesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /ctypes
   # GET /ctypes.json
   def index

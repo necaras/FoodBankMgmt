@@ -1,4 +1,6 @@
 class OutdonationsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /outdonations
   # GET /outdonations.json
   def index

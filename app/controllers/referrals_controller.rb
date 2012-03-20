@@ -1,4 +1,6 @@
 class ReferralsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /referrals
   # GET /referrals.json
   def index

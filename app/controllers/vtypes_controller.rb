@@ -1,4 +1,6 @@
 class VtypesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /vtypes
   # GET /vtypes.json
   def index

@@ -1,4 +1,6 @@
 class RefagencycategoriesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /refagencycategories
   # GET /refagencycategories.json
   def index

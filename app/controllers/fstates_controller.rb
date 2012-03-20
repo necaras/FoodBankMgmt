@@ -1,4 +1,6 @@
 class FstatesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /fstates
   # GET /fstates.json
   def index

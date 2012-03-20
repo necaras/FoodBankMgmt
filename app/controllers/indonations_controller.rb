@@ -1,4 +1,6 @@
 class IndonationsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /indonations
   # GET /indonations.json
   def index

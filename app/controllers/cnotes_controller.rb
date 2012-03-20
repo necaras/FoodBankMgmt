@@ -1,4 +1,6 @@
 class CnotesController < ApplicationController
+  before_filter :authenticate_user!
+  
     def create
         @client = Client.find(params[:client_id])
         @cnote = @client.cnotes.create(params[:cnote])

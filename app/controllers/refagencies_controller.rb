@@ -1,4 +1,6 @@
 class RefagenciesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /refagencies
   # GET /refagencies.json
   def index

@@ -1,4 +1,6 @@
 class DtypesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /dtypes
   # GET /dtypes.json
   def index
