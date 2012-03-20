@@ -1,12 +1,40 @@
-<h2>Resend unlock instructions</h2>
+<div class="container">
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
 
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
+            <div class="content">
+                <h1>Resend Unlock Instructions</h1>
 
-<%= render "links" %>
+                <div class="body">
+
+			<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+			  <%= devise_error_messages! %>
+
+			  <div><%= f.label :email %><br />
+			  <%= f.email_field :email %></div>
+
+			  <div><%= f.submit "Resend unlock instructions" %></div>
+			<% end %>
+
+			<%= render "links" %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>
