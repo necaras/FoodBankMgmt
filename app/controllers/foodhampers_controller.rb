@@ -1,5 +1,6 @@
 class FoodhampersController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   
   # GET /foodhampers
   # GET /foodhampers.json

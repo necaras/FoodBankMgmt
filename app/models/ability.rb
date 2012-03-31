@@ -24,5 +24,20 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    
+    user ||= User.new # guest user (not logged in)
+    
+    if user.role? :Admin
+      can :manage, :all
+    elsif user.role? :Volunteer_Coordinator
+      can :manage, [Volunteer, Vhour, Vtype]
+    elsif user.role? :Client_Services
+      can :manage, [Location, Community, Household, Family, Fstate, Client, Ctype, Cnote, Refagency, Refagencycategory, Referral]
+      cannot :destroy, :all
+    elseif user.role? :Donations_Coordinator
+      can :manage, [Donor, Donee, Dtype, Indonation, Outdonation]
+      cannot :destroy, :all
+    end
+    
   end
 end

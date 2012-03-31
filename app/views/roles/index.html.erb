@@ -1,0 +1,58 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Listing Roles</h1>
+                
+                <div class="body">
+                    
+                    <% if @roles.nil? || @roles.empty? %>
+                        
+                        <p>There are no roles.</p>
+                    
+                    <% else %>   
+
+			<table width="100%">
+			  <tr width="100%">
+			    <th>Name</th>
+			    <th width="6%"></th>
+			    <th width="6%"></th>
+			    <th width="10%"></th>
+			  </tr>
+
+			<% @roles.each do |role| %>
+                          <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+			    <td><%= role.name %></td>
+			    <td><%= link_to 'Show', role %></td>
+			    <td><%= link_to 'Edit', edit_role_path(role) %></td>
+			    <td><%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete %></td>
+			  </tr>
+			<% end %>
+			</table>
+		    <% end %>
+
+			<br />
+
+			<%= link_to 'New Role', new_role_path %>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>    
