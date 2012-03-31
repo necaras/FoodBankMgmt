@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+	
+
+[:Admin, :Volunteer_Coordinator, :Client_Services, :Donations_Coordinator].each { |r| Role.create(:name => r.to_s.camelize) }
+User.create! do |u|
+	u.username = 'admin'
+	u.email = 'admin@localhost.local'
+	u.password = 'password'
+	u.password_confirmation = 'password'
+	u.role_ids = [Role.find_by_name('Admin')]
+end

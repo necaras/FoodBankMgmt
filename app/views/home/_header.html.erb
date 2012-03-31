@@ -1,5 +1,11 @@
 	<div class="top">
 		<%= link_to content_tag(:span, 'Food Bank Client Services'), '/' %>
+
 	</div>
-	
+	<div class="usernav">
+		<ul class="hmenu">
+	  		<%= render 'devise/menu/registration_items' %>
+	  		<%= render 'devise/menu/login_items' %>
+		</ul>
+	</div>	
 	<div class="header"></div>

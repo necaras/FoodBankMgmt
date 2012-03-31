@@ -1,4 +1,7 @@
 class ClientsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   # GET /clients
   # GET /clients.json
   def index

@@ -1,0 +1,43 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+            
+            <div class="date">
+                <div>&nbsp</div>
+                <span>&nbsp</span>
+            </div>
+
+            <div class="content">
+                <h1>Showing User</h1>
+                
+                <div class="body">
+
+			<p>
+			  <b>Email:</b>
+			  <%= @user.email %>
+			</p>
+
+			<p>
+			  <b>Username:</b>
+			  <%= @user.username %>
+			</p>
+
+
+			<%= link_to 'Edit', edit_user_path(@user) %> |
+			<%= link_to 'Back', users_path %>
+		</div>
+            </div>
+        </div>
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>   
