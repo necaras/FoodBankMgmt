@@ -29,12 +29,12 @@ class Ability
     
     if user.role? :Admin
       can :manage, :all
-    elsif user.role? :Volunteer_Coordinator
+    elsif user.role? :VolunteerCoordinator
       can :manage, [Volunteer, Vhour, Vtype]
-    elsif user.role? :Client_Services
+    elsif user.role? :ClientServices
       can :manage, [Location, Community, Household, Family, Fstate, Client, Ctype, Cnote, Refagency, Refagencycategory, Referral]
       cannot :destroy, :all
-    elseif user.role? :Donations_Coordinator
+    elsif user.role? :DonationsCoordinator
       can :manage, [Donor, Donee, Dtype, Indonation, Outdonation]
       cannot :destroy, :all
     end
