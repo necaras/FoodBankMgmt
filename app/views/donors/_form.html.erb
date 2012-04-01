@@ -45,9 +45,9 @@
     <%= f.select(:location_id, @locations, {:include_blank => "--Select a Location--"}) %>
   </div>
   <div class="field">
-    <%= f.label :dtype, "donor Type" %><br />
+    <%= f.label :dtype, "Donor Type" %><br />
     <% @dtypes = Dtype.all.map{|dt| [dt.description, dt.id]} %>
-    <%= f.select(:dtype_id, @dtypes, {:include_blank => "--Select a donor Type--"}) %>
+    <%= f.select(:dtype_id, @dtypes, {:include_blank => "--Select a Donor Type--"}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

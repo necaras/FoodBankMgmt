@@ -1,37 +1,40 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Referral Agency Category</h1>
-                
-                <div class="body">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Description:</b>
-                      <%= @refagencycategory.description %>
-                    </p>
+			<div class="content">
+				<h1>Showing Referral Agency Category</h1>
 
-                    <%= link_to 'Edit', edit_refagencycategory_path(@refagencycategory) %> |
-                    <%= link_to 'Back', refagencycategories_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+				<div class="body">
 
-    <%= render :partial => "home/navigation" %>
-	
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>
+					<p>
+						<b>Description:</b>
+						<%= @refagencycategory.description %>
+					</p>
+
+					<%= link_to 'Edit', edit_refagencycategory_path(@refagencycategory) %> |
+					<%= link_to 'Back', refagencycategories_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+	</div><!--main-->
+
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>   
+</div><!--container-->

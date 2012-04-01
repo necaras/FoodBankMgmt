@@ -1,38 +1,42 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Family State</h1>
-                
-                <div class="body">  
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Description:</b>
-                      <%= @fstate.description %>
-                    </p>
+			<div class="content">
+				<h1>Showing Family State</h1>
+
+				<div class="body">  
+				
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>  
+					
+					<p>
+						<b>Description:</b>
+						<%= @fstate.description %>
+					</p>
 
 
-                    <%= link_to 'Edit', edit_fstate_path(@fstate) %> |
-                    <%= link_to 'Back', fstates_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+					<%= link_to 'Edit', edit_fstate_path(@fstate) %> |
+					<%= link_to 'Back', fstates_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+	</div><!--main-->
 
-    <%= render :partial => "home/navigation" %>
-	
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>  
+</div><!--container-->

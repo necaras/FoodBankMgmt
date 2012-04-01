@@ -38,6 +38,14 @@
 			<li><%= link_to "Referrals", referrals_path %></li>
 		</ul>
 	<% end %>
+	<% if can? :read, :volunteers %>
+		<h1>Volunteers</h1>
+		<ul>
+			<li><%= link_to "Volunteers", volunteers_path %></li>
+			<li><%= link_to "Volunteer Hours", vhours_path %></li>
+			<li><%= link_to "Volunteer Types", vtypes_path %></li>
+		</ul>
+	<% end %>
 	<% if can? :read, :users %>
 		<h1>Administration</h1>
 		<ul>
