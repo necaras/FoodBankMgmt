@@ -1,73 +1,92 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Location</h1>
-                
-                <div class="body">                      
-                    <p>
-                      <b>City:</b>
-                      <%= @location.city %>
-                    </p>
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Province:</b>
-                      <%= @location.province %>
-                    </p>
+			<div class="content">
+				<h1>Showing Location</h1>
 
-                    <p>
-                      <b>Country:</b>
-                      <%= @location.country %>
-                    </p>
+				<div class="body">  
+					
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>  
+					                    
+					<p>
+						<b>City:</b>
+						<%= @location.city %>
+					</p>
 
-                    <p>
-                      <b>Description:</b>
-                      <%= @location.jurisdiction_description %>
-                    </p>
-                    
-                    <% if @location.communities.nil? || @location.communities.empty? %>
-                    
-                        <p>There are no communities in this location.</p>
-                    
-                    <% else %>
-                    
-                        <h2>Communities:</h2>
-                        <table>
-                          <tr width="100%">
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th width="8%"></th>
-                            <th width="6%"></th>
-                          </tr>
-                        <%= render @location.communities %>
-                        </table>
-                        
-                    <% end %>
+					<p>
+						<b>Province:</b>
+						<%= @location.province %>
+					</p>
 
-                    <%= link_to 'Add New Community to Location', new_community_path(:location_id => @location.id) %>
-                    <br /><br />                
+					<p>
+						<b>Country:</b>
+						<%= @location.country %>
+					</p>
 
-                    <%= link_to 'Edit', edit_location_path(@location) %> |
-                    <%= link_to 'Back', locations_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+					<p>
+						<b>Description:</b>
+						<%= @location.jurisdiction_description %>
+					</p>          
 
-    <%= render :partial => "home/navigation" %>
-	
+					<%= link_to 'Edit', edit_location_path(@location) %> |
+					<%= link_to 'Back', locations_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+		
+		<div class="item">
+
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
+
+			<div class="content">
+				<h1>Communities</h1>
+
+				<div class="body">
+					<% if @location.communities.nil? || @location.communities.empty? %>
+
+						<p>There are no communities in this location.</p>
+
+					<% else %>
+
+						<table>
+							<tr width="100%">
+								<th>Name</th>
+								<th>Description</th>
+								<th width="8%"></th>
+								<th width="6%"></th>
+							</tr>
+							<%= render @location.communities %>
+						</table>
+
+					<% end %>
+
+					<%= link_to 'Add New Community to Location', new_community_path(:location_id => @location.id) %>   				
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+				
+				
+	</div><!--main-->
+
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>  
+</div><!--container-->

@@ -1,38 +1,57 @@
-	<div class="navigation">
-
-		<h1>Locales</h1>
+<div class="navigation">
+<% if user_signed_in? %>
+	<% if can? :read, :locations %>
+	<h1>Locales</h1>
 		<ul>
 			<li><%= link_to "Cities/Towns", locations_path %></li>
 			<li><%= link_to "Communities", communities_path %></li>
 		</ul>
-        
-        <h1>Households</h1>
+	<% end %>
+
+	<% if can? :read, :clients %>
+		<h1>Households</h1>
 		<ul>
-            <li><%= link_to "Households", households_path %></li>
+			<li><%= link_to "Households", households_path %></li>
 			<li><%= link_to "Families", families_path %></li>
-			<li><%= link_to "Food Hampers", foodhampers_path %></li>
-            <li><%= link_to "Family States", fstates_path %></li>
-		</ul>
-        
-        <h1>Clients</h1>
-		<ul>
+			<li><%= link_to "Family States", fstates_path %></li>
 			<li><%= link_to "Clients", clients_path %></li>
 			<li><%= link_to "Client Types", ctypes_path %></li>
+			<li><%= link_to "Food Hampers", foodhampers_path %></li>
 		</ul>
-        
-        <h1>Donations</h1>
+	<% end %>
+
+	<% if can? :read, :donors %>
+		<h1>Donations</h1>
 		<ul>
 			<li><%= link_to "Donors", donors_path %></li>
-            <li><%= link_to "Donees", donees_path %></li>
+			<li><%= link_to "Donees", donees_path %></li>
 			<li><%= link_to "Donor/Donee Types", dtypes_path %></li>
-            <li><%= link_to "Incoming Donations", indonations_path %></li>
-            <li><%= link_to "Outgoing Donations", outdonations_path %></li>
+			<li><%= link_to "Incoming Donations", indonations_path %></li>
+			<li><%= link_to "Outgoing Donations", outdonations_path %></li>
 		</ul>
-        <h1>Referrals</h1>
+	<% end %>
+	<% if can? :read, :referrals %>
+		<h1>Referrals</h1>
 		<ul>
 			<li><%= link_to "Referral Agencies", refagencies_path %></li>
-            <li><%= link_to "Referral Agency Categories", refagencycategories_path %></li>
+			<li><%= link_to "Referral Agency Categories", refagencycategories_path %></li>
 			<li><%= link_to "Referrals", referrals_path %></li>
 		</ul>
+	<% end %>
+	<% if can? :read, :volunteers %>
+		<h1>Volunteers</h1>
+		<ul>
+			<li><%= link_to "Volunteers", volunteers_path %></li>
+			<li><%= link_to "Volunteer Hours", vhours_path %></li>
+			<li><%= link_to "Volunteer Types", vtypes_path %></li>
+		</ul>
+	<% end %>
+	<% if can? :read, :users %>
+		<h1>Administration</h1>
+		<ul>
+			<li><%= link_to "User Accounts", users_path %></li>
+		</ul>
+	<% end %>
+<% end %>
 
-	</div>
+</div>

@@ -1,4 +1,7 @@
 class VhoursController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   # GET /vhours
   # GET /vhours.json
   def index

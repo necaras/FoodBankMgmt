@@ -12,13 +12,20 @@
             </div>
 
             <div class="content">
-                <h1>New Family State</h1>
-                
-                <div class="body">                      
+                <h1>Forgot Your Password?</h1>
 
-                    <%= render 'form' %>
+                <div class="body">
 
-                    <%= link_to 'Back', fstates_path %>
+			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+			  <%= devise_error_messages! %>
+
+			  <div><%= f.label :email %><br />
+			  <%= f.email_field :email %></div>
+
+			  <div><%= f.submit "Send me reset password instructions" %></div>
+			<% end %>
+
+			<%= render "links" %>
                 </div>
             </div>
         </div>
@@ -30,4 +37,4 @@
 
     <%= render :partial => "home/footer" %>
 
-</div>  
+</div>

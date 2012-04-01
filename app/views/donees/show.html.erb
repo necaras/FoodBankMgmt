@@ -1,101 +1,117 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Donee</h1>
-                
-                <div class="body">  
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Name:</b>
-                      <%= @donee.name %>
-                    </p>
+			<div class="content">
+				<h1>Showing Donee</h1>
 
-                    <p>
-                      <b>Phone Number:</b>
-                      <%= @donee.phone1 %>
-                    </p>
+				<div class="body">  
+				
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>  
+					
+					<p>
+						<b>Name:</b>
+						<%= @donee.name %>
+					</p>
 
-                    <p>
-                      <b>Alternate Phone Number:</b>
-                      <%= @donee.phone2 %>
-                    </p>
+					<p>
+						<b>Phone Number:</b>
+						<%= @donee.phone1 %>
+					</p>
 
-                    <p>
-                      <b>Unit:</b>
-                      <%= @donee.unit %>
-                    </p>
+					<p>
+						<b>Alternate Phone Number:</b>
+						<%= @donee.phone2 %>
+					</p>
 
-                    <p>
-                      <b>Address:</b>
-                      <%= @donee.address %>
-                    </p>
+					<p>
+						<b>Unit:</b>
+						<%= @donee.unit %>
+					</p>
 
-                    <p>
-                      <b>Email Address:</b>
-                      <%= @donee.emailaddress %>
-                    </p>
+					<p>
+						<b>Address:</b>
+						<%= @donee.address %>
+					</p>
 
-                    <p>
-                      <b>Contact:</b>
-                      <%= @donee.contact %>
-                    </p>
+					<p>
+						<b>Email Address:</b>
+						<%= @donee.emailaddress %>
+					</p>
 
-                    <p>
-                      <b>Location:</b>
-                      <%= @donee.location.get_location_name %>
-                    </p>
+					<p>
+						<b>Contact:</b>
+						<%= @donee.contact %>
+					</p>
 
-                    <p>
-                      <b>Donee Type:</b>
-                      <%= Dtype.find(@donee.dtype_id).description unless (@donee.dtype_id.nil?) %>
-                    </p>
-                    
-                    <% if @donee.outdonations.nil? || @donee.outdonations.empty? %>
-                        
-                        <p>There are no outgoing donations to this donee.</p>
-                    
-                    <% else %>
+					<p>
+						<b>Location:</b>
+						<%= @donee.location.get_location_name %>
+					</p>
 
-                        <table width="100%">
-                          <tr width="100%">
-                            <th>Donee</th>
-                            <th>Date</th>
-                            <th>lbs.</th>
-                            <th>$</th>
-                            <th width="6%"></th>
-                            <th width="8%"></th>
-                          </tr>
-                          
-                          <%= render @donee.outdonations %>
-                        </table>
-                    <% end %>
-                    
-                    <%= link_to 'Add New Donation to Donee', new_outdonation_path(:donee_id => @donee.id) %>
-                    <br /><br />   
+					<p>
+						<b>Donee Type:</b>
+						<%= Dtype.find(@donee.dtype_id).description unless (@donee.dtype_id.nil?) %>
+					</p>
 
+					<%= link_to 'Edit', edit_donee_path(@donee) %> |
+					<%= link_to 'Back', donees_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+		
+		<div class="item">
 
-                    <%= link_to 'Edit', edit_donee_path(@donee) %> |
-                    <%= link_to 'Back', donees_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-    <%= render :partial => "home/navigation" %>
-	
+			<div class="content">
+				<h1>Outgoing Donations</h1>
+
+				<div class="body">
+					<% if @donee.outdonations.nil? || @donee.outdonations.empty? %>
+
+						<p>There are no outgoing donations to this donee.</p>
+
+					<% else %>
+
+					<table width="100%">
+						<tr width="100%">
+							<th>Donee</th>
+							<th>Date</th>
+							<th>lbs.</th>
+							<th>$</th>
+							<th width="6%"></th>
+							<th width="8%"></th>
+						</tr>
+
+						<%= render @donee.outdonations %>
+					</table>
+					<% end %>
+
+					<%= link_to 'Add New Donation to Donee', new_outdonation_path(:donee_id => @donee.id) %> 
+				</div><!--body-->	
+			</div><!--content-->
+		</div><!--item-->				
+	</div><!--main-->
+
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div> 
+</div><!--container-->

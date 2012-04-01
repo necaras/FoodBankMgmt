@@ -1,63 +1,67 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Referral</h1>
-                
-                <div class="body">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Referral Agency:</b>
-                      <%= @referral.refagency.try(:name) %>
-                    </p>
+			<div class="content">
+				<h1>Showing Referral</h1>
 
-                    <p>
-                      <b>Details:</b>
-                      <%= @referral.details %>
-                    </p>
+				<div class="body">
 
-                    <p>
-                      <b>Number of Adults:</b>
-                      <%= @referral.numberofadults %>
-                    </p>
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>
+					
+					<p>
+						<b>Referral Agency:</b>
+						<%= @referral.refagency.try(:name) %>
+					</p>
 
-                    <p>
-                      <b>Number of Children:</b>
-                      <%= @referral.numberofchildren %>
-                    </p>
+					<p>
+						<b>Details:</b>
+						<%= @referral.details %>
+					</p>
 
-                    <p>
-                      <b>Referral Date:</b>
-                      <%= @referral.referraldate %>
-                    </p>
+					<p>
+						<b>Number of Adults:</b>
+						<%= @referral.numberofadults %>
+					</p>
 
-                    <p>
-                      <b>Client Name:</b>
-                      <%= @referral.clientname %>
-                    </p>
+					<p>
+						<b>Number of Children:</b>
+						<%= @referral.numberofchildren %>
+					</p>
+
+					<p>
+						<b>Referral Date:</b>
+						<%= @referral.referraldate %>
+					</p>
+
+					<p>
+						<b>Client Name:</b>
+						<%= @referral.clientname %>
+					</p>
 
 
-                    <%= link_to 'Edit', edit_referral_path(@referral) %> |
-                    <%= link_to 'Back', referrals_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+					<%= link_to 'Edit', edit_referral_path(@referral) %> |
+					<%= link_to 'Back', referrals_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+	</div><!--main-->
 
-    <%= render :partial => "home/navigation" %>
-	
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>     
+</div><!--container-->

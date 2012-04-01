@@ -12,16 +12,15 @@
             </div>
 
             <div class="content">
-                <h1>Editing Family State</h1>
+                <h1>Editing User</h1>
                 
                 <div class="body">
 
-                    <%= render 'form' %>
+			<%= render 'form' %>
 
-                    <%= link_to 'Show', @fstate %> |
-                    <%= link_to 'Back', fstates_path %>
-                    
-                </div>
+			<%= link_to 'Show', @user %> |
+			<%= link_to 'Back', users_path %>
+		</div>
             </div>
         </div>
 	</div>
@@ -32,4 +31,4 @@
 
     <%= render :partial => "home/footer" %>
 
-</div>   
+</div>    

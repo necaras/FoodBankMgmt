@@ -48,6 +48,17 @@ class Client < ActiveRecord::Base
             @client_name = "#{@client.try(:lastname)}, #{@client.try(:firstname)}"
         end
     end
+    
+    #method assign_as_primary_client
+    #assigns the current client as the head of household if one does not exist
+    def assign_as_primary_client
+    	@family = Family.find_by_id(self.family_id)
+    	if ((not @family.nil?) && @family.try(:primaryclient_id).nil?)
+    		@family.primaryclient_id = self.id
+    		@family.save
+    	end 
+    end
+    		
 
         
 end

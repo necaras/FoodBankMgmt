@@ -1,4 +1,7 @@
 class CommunitiesController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   # GET /communities
   # GET /communities.json
   def index

@@ -81,6 +81,23 @@ h1,h2,h3 {color: #654;}
 	text-decoration: none;
 	width: 100%;
 }
+.usernav {
+	background: #E8F6BF;
+	font: Verdana,sans-serif;
+	height: 30px;
+	margin: 0 auto;
+	width: 630px;
+}
+.usernav ul.hmenu {
+  float: right;
+  list-style: none;	
+  margin: 0 0 2em;
+  padding: 5px;
+}
+
+.usernav ul.hmenu li {
+  display: inline;  
+}
 /* header */
 .header {
 	background: url(/assets/header.jpg) no-repeat;
