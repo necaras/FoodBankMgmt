@@ -1,130 +1,146 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Volunteer</h1>
-                
-                <div class="body">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Volunteer Type:</b>
-                      <%= @volunteer.vtype.try(:description) %>
-                    </p>
+			<div class="content">
+				<h1>Showing Volunteer</h1>
 
-                    <p>
-                      <b>Name:</b>
-                      <%= @volunteer.get_volunteer_name %>
-                    </p>
-                    
-                    <p>
-                      <b>Gender:</b>
-                      <%= @volunteer.gender %>
-                    </p>
-                    
-                    <p>
-                      <b>Unit:</b>
-                      <%= @volunteer.unit %>
-                    </p>
+				<div class="body">
+				
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>
+					
+					<p>
+						<b>Volunteer Type:</b>
+						<%= @volunteer.vtype.try(:description) %>
+					</p>
 
-                    <p>
-                      <b>Address:</b>
-                      <%= @volunteer.address %>
-                    </p>
-                    
-                    <p>
-                      <b>City:</b>
-                      <%= @volunteer.location.get_location_name %>
-                    </p>
-                    
-                    <p>
-                      <b>Postal Code:</b>
-                      <%= @volunteer.postalcode %>
-                    </p>
-                    
-                    <p>
-                      <b>Primary Phone Number:</b>
-                      <%= @volunteer.phone1 %>
-                    </p>
+					<p>
+						<b>Name:</b>
+						<%= @volunteer.get_volunteer_name %>
+					</p>
 
-                    <p>
-                      <b>Alternate Phone Number:</b>
-                      <%= @volunteer.phone2 %>
-                    </p>
+					<p>
+						<b>Gender:</b>
+						<%= @volunteer.gender %>
+					</p>
 
-                    <p>
-                      <b>Birth Date:</b>
-                      <%= @volunteer.birthdate %>
-                    </p>
+					<p>
+						<b>Unit:</b>
+						<%= @volunteer.unit %>
+					</p>
 
-                    <p>
-                      <b>Start Date:</b>
-                      <%= @volunteer.startdate %>
-                    </p>
+					<p>
+						<b>Address:</b>
+						<%= @volunteer.address %>
+					</p>
 
-                    <p>
-                      <b>Email Address:</b>
-                      <%= @volunteer.emailaddress %>
-                    </p>
+					<p>
+						<b>City:</b>
+						<%= @volunteer.location.get_location_name %>
+					</p>
 
-                    <p>
-                      <b>Emergency Contact Name:</b>
-                      <%= @volunteer.emergcontactname %>
-                    </p>
+					<p>
+						<b>Postal Code:</b>
+						<%= @volunteer.postalcode %>
+					</p>
 
-                    <p>
-                      <b>Emergency Contact Phone Number:</b>
-                      <%= @volunteer.emergcontactphone %>
-                    </p>
+					<p>
+						<b>Primary Phone Number:</b>
+						<%= @volunteer.phone1 %>
+					</p>
 
-                    <p>
-                      <b>Notes:</b>
-                      <%= @volunteer.notes %>
-                    </p>
-                    
-                    <% if @volunteer.vhours.nil? || @volunteer.vhours.empty? %>
-                    
-                        <p>There are no volunteer hour entries for this volunteer.</p>
-                    
-                    <% else %>
-                    
-                        <h2>Volunteer Hours:</h2>
-                        <table width="100%">
-                          <tr width="100%">
-                            <th>Volunteer</th>
-                            <th>Date</th>
-                            <th>Hrs.</th>
-                            <th width="8%"></th>
-                            <th width="6%"></th>
-                          </tr>
-                        <%= render @volunteer.vhours %>
-                        </table>
-                        
-                    <% end %>
+					<p>
+						<b>Alternate Phone Number:</b>
+						<%= @volunteer.phone2 %>
+					</p>
 
-                    <%= link_to 'Add New Hours Entry for Volunteer', new_referral_path(:volunteer_id => @volunteer.id) %>
-                    <br /><br /> 
+					<p>
+						<b>Birth Date:</b>
+						<%= @volunteer.birthdate %>
+					</p>
 
-                    <%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
-                    <%= link_to 'Back', volunteers_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+					<p>
+						<b>Start Date:</b>
+						<%= @volunteer.startdate %>
+					</p>
 
-    <%= render :partial => "home/navigation" %>
-	
+					<p>
+						<b>Email Address:</b>
+						<%= @volunteer.emailaddress %>
+					</p>
+
+					<p>
+						<b>Emergency Contact Name:</b>
+						<%= @volunteer.emergcontactname %>
+					</p>
+
+					<p>
+						<b>Emergency Contact Phone Number:</b>
+						<%= @volunteer.emergcontactphone %>
+					</p>
+
+					<p>
+						<b>Notes:</b>
+						<%= @volunteer.notes %>
+					</p>
+
+					<%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
+					<%= link_to 'Back', volunteers_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+		
+		<div class="item">
+
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
+
+			<div class="content">
+				<h1>Volunteer Hours</h1>
+
+				<div class="body">
+					<% if @volunteer.vhours.nil? || @volunteer.vhours.empty? %>
+
+						<p>There are no volunteer hour entries for this volunteer.</p>
+
+					<% else %>
+
+						<table width="100%">
+							<tr width="100%">
+								<th>Volunteer</th>
+								<th>Date</th>
+								<th>Hrs.</th>
+								<th width="8%"></th>
+								<th width="6%"></th>
+							</tr>
+							<%= render @volunteer.vhours %>
+						</table>
+
+					<% end %>
+
+					<%= link_to 'Add New Hours Entry for Volunteer', new_referral_path(:volunteer_id => @volunteer.id) %>				
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->		
+	</div><!--main-->
+
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>   
+</div><!--container-->

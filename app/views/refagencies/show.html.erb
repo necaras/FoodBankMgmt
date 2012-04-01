@@ -1,101 +1,117 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Referral Agency</h1>
-                
-                <div class="body">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Location:</b>
-                      <%= @refagency.location.get_location_name %>
-                    </p>
+			<div class="content">
+				<h1>Showing Referral Agency</h1>
 
-                    <p>
-                      <b>Name:</b>
-                      <%= @refagency.name %>
-                    </p>
+				<div class="body">
+				
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>
 
-                    <p>
-                      <b>Primary Phone Number:</b>
-                      <%= @refagency.phone1 %>
-                    </p>
+					<p>
+						<b>Location:</b>
+						<%= @refagency.location.get_location_name %>
+					</p>
 
-                    <p>
-                      <b>Alternate Phone Number:</b>
-                      <%= @refagency.phone2 %>
-                    </p>
+					<p>
+						<b>Name:</b>
+						<%= @refagency.name %>
+					</p>
 
-                    <p>
-                      <b>Unit:</b>
-                      <%= @refagency.unit %>
-                    </p>
+					<p>
+						<b>Primary Phone Number:</b>
+						<%= @refagency.phone1 %>
+					</p>
 
-                    <p>
-                      <b>Address:</b>
-                      <%= @refagency.address %>
-                    </p>
+					<p>
+						<b>Alternate Phone Number:</b>
+						<%= @refagency.phone2 %>
+					</p>
 
-                    <p>
-                      <b>Contact:</b>
-                      <%= @refagency.contact %>
-                    </p>
+					<p>
+						<b>Unit:</b>
+						<%= @refagency.unit %>
+					</p>
 
-                    <p>
-                      <b>Email Address:</b>
-                      <%= @refagency.emailaddress %>
-                    </p>
+					<p>
+						<b>Address:</b>
+						<%= @refagency.address %>
+					</p>
 
-                    <p>
-                      <b>Referral Agency Category:</b>
-                      <%= @refagency.refagencycategory.try(:description) %>
-                    </p>
-                    
-                    <% if @refagency.referrals.nil? || @refagency.referrals.empty? %>
-                    
-                        <p>There are no referrals associated with this agency.</p>
-                    
-                    <% else %>
-                    
-                        <h2>Referrals:</h2>
-                        <table width="100%">
-                          <tr width="100%">
-                            <th>Agency</th>
-                            <th>Date</th>
-                            <th>Client</th>
-                            <th width="8%"></th>
-                            <th width="6%"></th>
-                          </tr>
-                        <%= render @refagency.referrals %>
-                        </table>
-                        
-                    <% end %>
+					<p>
+						<b>Contact:</b>
+						<%= @refagency.contact %>
+					</p>
 
-                    <%= link_to 'Add New Referral from Agency', new_referral_path(:refagency_id => @refagency.id) %>
-                    <br /><br /> 
+					<p>
+						<b>Email Address:</b>
+						<%= @refagency.emailaddress %>
+					</p>
 
+					<p>
+						<b>Referral Agency Category:</b>
+						<%= @refagency.refagencycategory.try(:description) %>
+					</p>
 
-                    <%= link_to 'Edit', edit_refagency_path(@refagency) %> |
-                    <%= link_to 'Back', refagencies_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+					<%= link_to 'Edit', edit_refagency_path(@refagency) %> |
+					<%= link_to 'Back', refagencies_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+		
+		<div class="item">
 
-    <%= render :partial => "home/navigation" %>
-	
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
+
+			<div class="content">
+				<h1>Referrals</h1>
+
+				<div class="body">
+					<% if @refagency.referrals.nil? || @refagency.referrals.empty? %>
+
+						<p>There are no referrals associated with this agency.</p>
+
+					<% else %>
+
+						<table width="100%">
+								<tr width="100%">
+								<th>Agency</th>
+								<th>Date</th>
+								<th>Client</th>
+								<th width="8%"></th>
+								<th width="6%"></th>
+							</tr>
+						<%= render @refagency.referrals %>
+						</table>
+
+					<% end %>
+
+					<%= link_to 'Add New Referral from Agency', new_referral_path(:refagency_id => @refagency.id) %>
+
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+	</div><!--main-->
+
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div>    
+</div><!--container-->

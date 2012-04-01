@@ -1,58 +1,62 @@
 <div class="container">
 
-    <%= render :partial => "home/header" %>
-		
+	<%= render :partial => "home/header" %>
+
 	<div class="main">
 
 		<div class="item">
-            
-            <div class="date">
-                <div>&nbsp</div>
-                <span>&nbsp</span>
-            </div>
 
-            <div class="content">
-                <h1>Showing Outgoing Donation</h1>
-                
-                <div class="body">
+			<div class="date">
+				<div>&nbsp</div>
+				<span>&nbsp</span>
+			</div>
 
-                    <p>
-                      <b>Donee:</b>
-                      <%= Donee.find(@outdonation.donee_id).name %>
-                    </p>
+			<div class="content">
+				<h1>Showing Outgoing Donation</h1>
 
-                    <p>
-                      <b>Date:</b>
-                      <%= @outdonation.donationdate %>
-                    </p>
+				<div class="body">
 
-                    <p>
-                      <b>Weight of Items Donated:</b>
-                      <%= @outdonation.weightdonated %>
-                    </p>
+					<% if not notice.nil? %>
+						<p id="notice"><%= notice %></p>
+					<% end %>
+					
+					<p>
+						<b>Donee:</b>
+						<%= Donee.find(@outdonation.donee_id).name %>
+					</p>
 
-                    <p>
-                      <b>Money Donated:</b>
-                      <%= @outdonation.moneydonated %>
-                    </p>
+					<p>
+						<b>Date:</b>
+						<%= @outdonation.donationdate %>
+					</p>
 
-                    <p>
-                      <b>Details:</b>
-                      <%= @outdonation.details %>
-                    </p>
+					<p>
+						<b>Weight of Items Donated:</b>
+						<%= @outdonation.weightdonated %>
+					</p>
+
+					<p>
+						<b>Money Donated:</b>
+						<%= @outdonation.moneydonated %>
+					</p>
+
+					<p>
+						<b>Details:</b>
+						<%= @outdonation.details %>
+					</p>
 
 
-                    <%= link_to 'Edit', edit_outdonation_path(@outdonation) %> |
-                    <%= link_to 'Back', outdonations_path %>
-                </div>
-            </div>
-        </div>
-	</div>
+					<%= link_to 'Edit', edit_outdonation_path(@outdonation) %> |
+					<%= link_to 'Back', outdonations_path %>
+				</div><!--body-->
+			</div><!--content-->
+		</div><!--item-->
+	</div><!--main-->
 
-    <%= render :partial => "home/navigation" %>
-	
+	<%= render :partial => "home/navigation" %>
+
 	<div class="clearer"><span></span></div>
 
-    <%= render :partial => "home/footer" %>
+	<%= render :partial => "home/footer" %>
 
-</div> 
+</div><!--container-->
