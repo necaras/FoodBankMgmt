@@ -100,7 +100,7 @@ h1,h2,h3 {color: #654;}
 }
 /* header */
 .header {
-	background: url(/assets/header.jpg) no-repeat;
+	background: url(/assets/logo.jpg) no-repeat;
 	height: 180px;
 	margin: 0 auto;
 	width: 630px;

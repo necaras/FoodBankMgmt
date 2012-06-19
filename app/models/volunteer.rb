@@ -50,4 +50,13 @@ class Volunteer < ActiveRecord::Base
             @volunteer_name = "#{@volunteer.try(:lastname)}, #{@volunteer.try(:firstname)}"
         end
     end
+    
+    def self.GetVolunteerCount(startdate, enddate)
+        @volunteers_count = Volunteer.joins(:vhours).where('vhours.date' => startdate.to_date..enddate.to_date).uniq.count
+    end
+    
+    def self.GetVolunteerHours(startdate, enddate)
+        @vhours_sum = Volunteer.joins(:vhours).where('vhours.date' => startdate.to_date..enddate.to_date).sum('vhours.hoursworked')
+    end
+    
 end

@@ -18,7 +18,7 @@ class Household < ActiveRecord::Base
 	@address << "#{self.unit}, " unless (self.unit.nil? || self.unit.empty?)
 	@address << "#{self.address} 
 		(#{Community.find(self.community_id).name}), 
-		#{Location.find(Community.find(self.community_id).id).get_location_name}"
+		#{Location.find(Community.find(self.community_id).location_id).get_location_name}"
   end
 end
 

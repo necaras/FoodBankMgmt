@@ -6,8 +6,16 @@ class Indonation < ActiveRecord::Base
 #   moneydonated    float
 #   details         text
 
-  validates     :donor_id,
+    validates     :donor_id,
                 :donationdate,      :presence => true
 
-  belongs_to :donor #FK - donor_id
+    belongs_to :donor #FK - donor_id
+  
+    def self.GetIndonationWeight(startdate, enddate)
+        @totalweight = Indonation.sum(:weightdonated, :conditions => {:donationdate => startdate.to_date..enddate.to_date})
+    end
+    def self.GetIndonationMoney(startdate, enddate)
+        @totalmoney = Indonation.sum(:moneydonated, :conditions => {:donationdate => startdate.to_date..enddate.to_date})
+    end
 end
+

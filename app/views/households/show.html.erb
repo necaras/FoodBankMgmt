@@ -42,7 +42,7 @@
 
 					<p>
 						<b>City:</b>
-						<%= Location.find(Community.find(@household.community_id).id).get_location_name %>
+						<%= Location.find(Community.find(@household.community_id).location_id).get_location_name %>
 					</p>
 					
 					<%= link_to 'Edit', edit_household_path(@household) %> |

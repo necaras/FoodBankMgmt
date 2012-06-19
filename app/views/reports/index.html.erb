@@ -1,0 +1,37 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+
+			<div class="date">
+				<div>&nbsp;</div>
+				<span>&nbsp;</span>
+			</div>
+
+			<div class="content">
+
+				<h1>Reports</h1>
+
+				<div class="body">
+                    <%= link_to "Monthly Director Report", reports_monthly_path(:month =>  Time.new.month, :year => Time.new.year), :action => "monthly", :method => "get"%>
+
+
+				</div>
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>
