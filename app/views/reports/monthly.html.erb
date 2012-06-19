@@ -1,0 +1,166 @@
+<div class="container">
+
+    <%= render :partial => "home/header" %>
+		
+	<div class="main">
+
+		<div class="item">
+
+			<div class="date">
+				<div>&nbsp;</div>
+				<span>&nbsp;</span>
+			</div>
+
+			<div class="content">
+
+				<h1>Monthly Director's Report - <%=Date::MONTHNAMES[@month.to_i]%>, <%=@year%></h1>
+
+				<div class="body">
+                
+                <%
+                @startofmonth = Date.civil(@year.to_i, @month.to_i, 1)
+                @endofmonth = @startofmonth.end_of_month
+                %>
+                
+                Previous Balance on Hand: 
+                <%=
+                    Indonation.GetIndonationWeight("1/1/2000", @startofmonth - 1.day) - Outdonation.GetOutdonationWeight("1/1/2000", @startofmonth - 1.day) - Foodhamper.GetHamperWeight("1/1/2000", @startofmonth - 1.day)
+                %>
+                <br />
+                
+                Incoming Food:
+                <%=
+                    Indonation.GetIndonationWeight(@startofmonth, @endofmonth)
+                %>
+                <br />
+                
+                Food Available:
+                <%=
+                    Indonation.GetIndonationWeight("1/1/2000", @startofmonth - 1.day) - Outdonation.GetOutdonationWeight("1/1/2000", @startofmonth - 1.day) - Foodhamper.GetHamperWeight("1/1/2000", @startofmonth - 1.day) + Indonation.GetIndonationWeight(@startofmonth, @endofmonth)
+                %>
+                <br /><hr>
+                
+                Outgoing Food:
+                <ul>
+                    <li>
+                        Shared Surplus:
+                        <%=
+                            Outdonation.GetOutdonationWeight(@startofmonth, @endofmonth)
+                        %>
+                    </li>
+                    <li>
+                        Food Hampers:
+                        <%=
+                            Foodhamper.GetHamperWeight(@startofmonth, @endofmonth)
+                        %>
+                    </li>
+                </ul>
+                
+                Total Outgoing Food:
+                <%=
+                    Outdonation.GetOutdonationWeight(@startofmonth, @endofmonth) + Foodhamper.GetHamperWeight(@startofmonth, @endofmonth)
+                %>
+                <br /><hr>
+                
+                Balance on Hand:
+                <%=
+                    Indonation.GetIndonationWeight("1/1/2000", @startofmonth - 1.day) - Outdonation.GetOutdonationWeight("1/1/2000", @startofmonth - 1.day) - Foodhamper.GetHamperWeight("1/1/2000", @startofmonth - 1.day) + Indonation.GetIndonationWeight(@startofmonth, @endofmonth) - Outdonation.GetOutdonationWeight(@startofmonth, @endofmonth) - Foodhamper.GetHamperWeight(@startofmonth, @endofmonth)
+                %>
+                <br /><hr>
+                Number of Hampers:
+                <%=
+                    Foodhamper.GetHamperCount(@startofmonth, @endofmonth)
+                %>
+                <br />
+                Average Hamper Weight:
+                <%=
+                    if Foodhamper.GetHamperCount(@startofmonth, @endofmonth) > 0
+                        Foodhamper.GetHamperWeight(@startofmonth, @endofmonth) / Foodhamper.GetHamperCount(@startofmonth, @endofmonth)
+                    else
+                        0
+                    end
+                %>
+                <br /><hr>
+                Number of Adults:
+                    <%= 
+                        Foodhamper.GetAdultCount(@startofmonth, @endofmonth)
+                    %>
+                <br />
+                Number of Children: 
+                    <%=
+                        Foodhamper.GetChildCount(@startofmonth, @endofmonth)
+                    %>
+                <br /><hr>
+                Referrals From:
+                <ul>
+                    <%
+                    @refagencycategories = Refagencycategory.all
+                    @refagencycategories.each do |rac|
+                        %>
+                        <li>
+                            <%= rac.description.pluralize %>: <%=rac.GetRAReferralCount(@startofmonth, @endofmonth) %>
+                        </li>
+                        <%
+                    end
+                    %>
+                    <li>Other/Undefined: <%=Refagencycategory.GetUndefinedRAReferralCount(@startofmonth, @endofmonth) %></li>
+                </ul>
+                Total Referrals: 
+                    <%= Refagencycategory.GetTotalRAReferralCount(@startofmonth, @endofmonth) %>
+                <br /><hr>
+				
+                Number of Volunteers:
+                
+                <%=
+                    Volunteer.GetVolunteerCount(@startofmonth, @endofmonth)
+                %>
+                <br />
+                Volunteer Hours Worked:
+                
+                <%=
+                    Volunteer.GetVolunteerHours(@startofmonth, @endofmonth)
+                %>
+                <br /><hr>
+                
+                Shared Surplus:
+                <ul>
+                    <%
+                    @doneetypes = Dtype.all
+                    @doneetypes.each do |dt|
+                        if dt.GetDonationWeight(@startofmonth, @endofmonth).to_f > 0
+                        %>
+                            <li><%= dt.description.pluralize %>: <%= dt.GetDonationWeight(@startofmonth, @endofmonth) %></li> 
+                        <%
+                        end
+                        if Dtype.GetUndefinedDonationWeight(@startofmonth, @endofmonth).to_f > 0
+                        %>
+                            <li>Other/Undefined: <%= Dtype.GetUndefinedDonationWeight(@startofmonth, @endofmonth) %></li> 
+                        <%
+                        end
+                    end
+                    %>
+                </ul>
+                
+                Total Shared Surplus:
+                <%=
+                    Dtype.GetTotalDonationWeight(@startofmonth, @endofmonth)
+                %>
+                <br /><hr>
+                
+                </div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+    <%= render :partial => "home/navigation" %>
+	
+	<div class="clearer"><span></span></div>
+
+    <%= render :partial => "home/footer" %>
+
+</div>

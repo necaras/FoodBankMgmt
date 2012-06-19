@@ -47,6 +47,9 @@
                         <br />
 
                         <%= link_to 'New Hamper', new_foodhamper_path %>
+                        <br />
+                        Total Hampers: <%= Foodhamper.GetHamperCount("1/1/2000", Date.today+1.day) %><br />
+                        Weight: <%= Foodhamper.GetHamperWeight("1/1/2000", Date.today+1.day) %><br />
                 </div>
             </div>
         </div>

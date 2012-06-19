@@ -48,6 +48,8 @@
                     <br />
 
                     <%= link_to 'New Incoming Donation', new_indonation_path %>
+                    <br />
+                    Total Incoming Donations to Date: <%= Indonation.GetIndonationWeight("1/1/2000", Date.today) %>
                 </div>
             </div>
         </div>

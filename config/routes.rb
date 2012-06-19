@@ -1,4 +1,8 @@
 Foodbank::Application.routes.draw do
+  get "reports" => "reports#index"
+  
+  match "reports/monthly", :to => "reports#monthly"
+
   resources :roles
 
   devise_for :users
