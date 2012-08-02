@@ -22,22 +22,22 @@
                     
                     <% else %>
                     
-                        <table width="100%">
-                          <tr width="100%">
+                        <table>
+                          <tr>
                             <th>Name</th>
-                            <th>Location</th>
                             <th>Type</th>
-                            <th width="6%"></th>
-                            <th width="8%"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
 
                         <% @donors.each do |donor| %>
                             <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= donor.name %></td>
-                            <td><%= donor.location.get_location_name %></td>
                             <td><%= donor.dtype.description unless (donor.dtype.nil?) %></td>
-                            <td><%= link_to 'Show', donor %></td>
-                            <td><%= link_to 'Edit', edit_donor_path(donor) %></td>
+                            <td class="actions"><%= link_to 'Show', donor %></td>
+                            <td class="actions"><%= link_to 'Edit', edit_donor_path(donor) %></td>
+                            <td class="actions"><%= link_to 'Delete', donor, :confirm => 'Are you sure?', :method => :delete %></td>
                           </tr>
                         <% end %>
                         </table>

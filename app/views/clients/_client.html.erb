@@ -1,9 +1,7 @@
-<tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+  <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
     <td><%= client.get_client_name %></td>
     <td><%= client.birthdate %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-</tr>
-
-
-
+    <td class="actions"><%= link_to 'Show', client %></td>
+    <td class="actions"><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td class="actions"><%= link_to 'Delete', client, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>

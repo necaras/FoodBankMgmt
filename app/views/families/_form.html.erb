@@ -32,11 +32,14 @@
   </div>
   
   <div class="field">
-    <%= family_form.label :primaryclient_id, "Primary Client" %><br />
-    <%= 
+    <%
         @clients = Client.find_all_by_family_id(@family.id)
         @clients_fullnames = @clients.collect{|c| [c.get_client_name, c.id]}
-        family_form.select(:primaryclient_id, @clients_fullnames, {:include_blank => '-None-'}) 
+        if @clients.any? %>
+            <%= family_form.label :primaryclient_id, "Head of Household" %><br />
+            <%= family_form.select(:primaryclient_id, @clients_fullnames, {:include_blank => '-None-'}) %>
+            <%
+        end
     %>
   </div>
   

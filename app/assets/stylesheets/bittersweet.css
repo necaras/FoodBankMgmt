@@ -44,6 +44,10 @@ blockquote {
 blockquote p {padding: 3px 0;}
 h1,h2,h3 {color: #654;}
 
+table, tr {width: 100%}
+th {text-align: left;}
+td.actions {width: 11%; text-align: center;}
+
 /* misc */
 .clearer {clear: both;}
 
@@ -100,7 +104,7 @@ h1,h2,h3 {color: #654;}
 }
 /* header */
 .header {
-	background: url(/assets/header.jpg) no-repeat;
+	background: url(/assets/logo.jpg) no-repeat;
 	height: 180px;
 	margin: 0 auto;
 	width: 630px;
@@ -175,3 +179,5 @@ h1,h2,h3 {color: #654;}
 }
 .footer a {color: #FFF;}
 .footer a:hover {color: #FAFCB0;}
+
+

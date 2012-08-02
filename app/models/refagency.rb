@@ -18,4 +18,5 @@ class Refagency < ActiveRecord::Base
                 :name,
                 :phone1,
                 :address,       :presence => true
+                
 end

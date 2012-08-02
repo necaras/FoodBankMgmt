@@ -22,14 +22,15 @@
                     
                     <% else %>
 
-                        <table width="100%">
-                          <tr width="100%">
+                        <table>
+                          <tr>
                             <th>Donor</th>
                             <th>Date</th>
                             <th>lbs.</th>
                             <th>$</th>
-                            <th width="6%"></th>
-                            <th width="8%"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
 
                         <% @indonations.each do |indonation| %>
@@ -38,8 +39,9 @@
                             <td><%= indonation.donationdate %></td>
                             <td><%= indonation.weightdonated %></td>
                             <td><%= indonation.moneydonated %></td>
-                            <td><%= link_to 'Show', indonation %></td>
-                            <td><%= link_to 'Edit', edit_indonation_path(indonation) %></td>
+                            <td class="actions"><%= link_to 'Show', indonation %></td>
+                            <td class="actions"><%= link_to 'Edit', edit_indonation_path(indonation) %></td>
+                            <td class="actions"><%= link_to 'Delete', indonation, :confirm => 'Are you sure?', :method => :delete %></td>
                           </tr>
                         <% end %>
                         </table>
@@ -48,6 +50,7 @@
                     <br />
 
                     <%= link_to 'New Incoming Donation', new_indonation_path %>
+                    <br />
                 </div>
             </div>
         </div>
