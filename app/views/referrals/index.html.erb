@@ -22,13 +22,14 @@
                     
                     <% else %>   
 
-                        <table width="100%">
-                          <tr width="100%">
+                        <table>
+                          <tr>
                             <th>Agency</th>
                             <th>Date</th>
                             <th>Client</th>
-                            <th width="8%"></th>
-                            <th width="6%"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
 
                         <% @referrals.each do |referral| %>
@@ -38,6 +39,7 @@
                             <td><%= referral.clientname %></td>
                             <td><%= link_to 'Show', referral %></td>
                             <td><%= link_to 'Edit', edit_referral_path(referral) %></td>
+                            <td class="actions"><%= link_to 'Delete', referral, :confirm => 'Are you sure?', :method => :delete %></td>
                           </tr>
                         <% end %>
                         </table>

@@ -25,17 +25,19 @@
                         <table>
                           <tr>
                             <th>City</th>
-                            <th>Prov.</th>
-                            <th width="6%"></th>
-                            <th width="8%"></th>
+                            <th>Province</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
 
                         <% @locations.each do |location| %>
                           <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= location.city %></td>
                             <td><%= location.province %></td>
-                            <td><%= link_to 'Show', location %></td>
-                            <td><%= link_to 'Edit', edit_location_path(location) %></td>
+                            <td class="actions"><%= link_to 'Show', location %></td>
+                            <td class="actions"><%= link_to 'Edit', edit_location_path(location) %></td>
+                            <td class="actions"><%= link_to 'Delete', location, :confirm => 'Are you sure?', :method => :delete %></td>
                           </tr>
                         <% end %>
                         </table>

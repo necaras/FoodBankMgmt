@@ -52,7 +52,7 @@
   </div>
   <div class="field">
     <%= client_form.label :birthdate, "Birth Date" %><br />
-    <%= client_form.date_select :birthdate %>
+    <%= client_form.date_select :birthdate, :start_year => Time.now.year - 105, :end_year => Time.now.year %>
   </div>
   <div class="field">
     <%= client_form.label :emailaddress, "Email Address" %><br />

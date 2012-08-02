@@ -27,12 +27,12 @@
 
 					<p>
 						<b>Phone Number:</b>
-						<%= @donor.phone1 %>
+						<%= number_to_phone(@donor.phone1, :area_code => true) %>
 					</p>
 
 					<p>
 						<b>Alternate Phone Number:</b>
-						<%= @donor.phone2 %>
+						<%= number_to_phone(@donor.phone2, :area_code => true) %>
 					</p>
 
 					<p>

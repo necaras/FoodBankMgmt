@@ -23,23 +23,21 @@
                     <% else %>
                     
                         <table>
-                          <tr width="100%">
+                          <tr>
                             <th>Head of Household</th>
-                            <th>Comment</th>
-                            <th width="6%">!</th>
                             <th>Phone</th>
-                            <th width="6%"></th>
-                            <th width="8%"></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
 
                         <% @families.each do |family| %>
                           <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
                             <td><%= family.get_primaryclient_name %></td>
-                            <td><%= family.comment %></td>
-                            <td><%= family.redflag %></td>
-                            <td><%= family.phone1 %></td>
-                            <td><%= link_to 'Show', family %></td>
-                            <td><%= link_to 'Edit', edit_family_path(family) %></td>
+                            <td><%= number_to_phone(family.phone1, :area_code => true) %></td>
+                            <td class="actions"><%= link_to 'Show', family %></td>
+                            <td class="actions"><%= link_to 'Edit', edit_family_path(family) %></td>
+                            <td class="actions"><%= link_to 'Delete', family, :confirm => 'Are you sure?', :method => :delete %></td>
                           </tr>
                         <% end %>
                         </table>
