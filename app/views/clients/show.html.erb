@@ -60,7 +60,7 @@
 		            </p>
 		            
 		            <%= link_to 'Edit Client', edit_client_path(@client) %> |
-		            <%= link_to 'Back to Clients', clients_path %>
+		            <%= link_to 'Back to Family', family_path(Family.find_by_id(@client.family_id))%>
 		            
 		        </div><!--body-->
 		    </div><!--content-->

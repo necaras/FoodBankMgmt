@@ -1,8 +1,9 @@
-<tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
+  <tr bgcolor="<%= cycle("E8F6BF", "FFFFFF")%>">
     <td><%= Donee.find(outdonation.donee_id).name %></td>
     <td><%= outdonation.donationdate %></td>
     <td><%= outdonation.weightdonated %></td>
     <td><%= outdonation.moneydonated %></td>
-    <td><%= link_to 'Show', outdonation %></td>
-    <td><%= link_to 'Edit', edit_outdonation_path(outdonation) %></td>
-</tr>
+    <td class="actions"><%= link_to 'Show', outdonation %></td>
+    <td class="actions"><%= link_to 'Edit', edit_outdonation_path(outdonation) %></td>
+    <td class="actions"><%= link_to 'Delete', outdonation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>

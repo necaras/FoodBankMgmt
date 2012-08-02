@@ -37,12 +37,12 @@
 
 					<p>
 					<b>Primary Phone:</b>
-					<%= @family.phone1 %>
+					<%= number_to_phone(@family.phone1, :area_code => true) %>
 					</p>
 
 					<p>
 					<b>Alternate Phone:</b>
-					<%= @family.phone2 %>
+					<%= number_to_phone(@family.phone2, :area_code => true) %>
 					</p>
 
 					<%= link_to 'Edit', edit_family_path(@family) %> |
