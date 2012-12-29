@@ -3,6 +3,27 @@
     <%= render :partial => "home/header" %>
 		
 	<div class="main">
+	
+		<div class="item">
+
+			<div class="date">
+				<div>DEC</div>
+				<span>29</span>
+			</div>
+
+			<div class="content">
+
+				<h1>Bug Fix - Password Reset</h1>
+
+				<div class="body">
+
+					<p>The password reset link should now work properly. The email is now being sent directly from the server rather than trying to route through Telus' mail server, which was causing delays and failures.</p>
+
+				</div>
+
+			</div>
+
+		</div>
 
 		<div class="item">
 
@@ -22,8 +43,6 @@
 					<blockquote><p>The web template is called 'bittersweet' and I thought that the green theme would go well with the SAFB logo.</p></blockquote>
 					
 					<p>The template is from Open Source Web Design and is free to use. The site can be found <a href='http://www.oswd.org/design/preview/id/3569'>here.</a></p>
-					
-					<%= can? :read, Volunteer %>
 
 				</div>
 
